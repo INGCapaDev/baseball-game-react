@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container-grid {
+  grid-template-columns: repeat(18, minmax(30px, 1fr));
+  grid-template-rows: repeat(9, minmax(30px, 1fr));
+}
+
+.grid-squares {
+  grid-template-columns: repeat(12, minmax(30px, 1fr));
+}
+
+.grid-fullscreen {
+  height: calc(100vh - 0.5rem);
+}
+
+.h-abs {
+  height: calc(100% - 0.5rem);
+}
