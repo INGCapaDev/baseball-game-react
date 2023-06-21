@@ -8,7 +8,7 @@ const Player = (props) => {
         <span className="absolute right-1 top-1 text-[3vh] font-bold uppercase text-white">
           {props.position}
         </span>
-        <span className="pl-2 font-sans text-[5vh]  uppercase text-white">
+        <span className="pl-2 font-chalk text-[5vh]  uppercase text-white">
           {props.name}
         </span>
       </div>
