@@ -5,7 +5,7 @@ const TopBar = (props) => {
   return (
     <div className="col-span-full grid grid-cols-12 bg-stone-800">
       <div className="col-span-3 flex items-center">
-        <span className="pl-2 font-sans text-[5vh] tracking-widest text-yellow-300">
+        <span className="pl-2 font-chalk text-[4vh] tracking-widest text-yellow-300">
           Team Name:
         </span>
       </div>

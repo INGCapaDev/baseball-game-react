@@ -5,7 +5,5 @@ import "./index.css";
 import Players from "./players/Players.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <Players></Players>
-  </React.StrictMode>
+  <Players></Players>
 );
