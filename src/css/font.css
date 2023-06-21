@@ -1,4 +1,5 @@
 @font-face {
   font-family: "Chalkduster";
-  src: url("../fonts/Chalkduster.ttf") format("truetype");
+  src: url("../fonts/Chalkduster.woff"), url("../fonts/Chalkduster.woff2"),
+    url("../fonts/Chalkduster.ttf"), url("../fonts/Chalkduster.eot");
 }
