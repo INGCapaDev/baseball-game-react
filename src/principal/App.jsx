@@ -15,6 +15,24 @@ const emptyRHE = ["", "", ""];
 function App() {
   const [game, setGame] = useState(false);
   const [menu, setMenu] = useState(false);
+  const [teamNames, setTeamNames] = useState({
+    // visitorTeam: "visitor team",
+    // localTeam: "local team",
+    visitorTeam: "Guadalajara",
+    localTeam: "Monterrey",
+  });
+
+  const handleTeamNameChange = (teamType, name) => {
+    setTeamNames((prevState) => ({
+      ...prevState,
+      [teamType]: name,
+    }));
+  };
+
+  const isPlayDisabled =
+    teamNames.visitorTeam === "visitor team" ||
+    teamNames.localTeam === "local team";
+
   return (
     <>
       <div className="container-grid grid-fullscreen m-1 grid gap-1">
@@ -22,9 +40,17 @@ function App() {
         <Out text="Out"></Out>
         <Button img="settings.svg"></Button>
         {game ? (
-          <Play text="Jugada" onClick={() => setMenu(true)}></Play>
+          <Play
+            text="Jugada"
+            onClick={() => setMenu(true)}
+            disabled={isPlayDisabled}
+          ></Play>
         ) : (
-          <Play text="Play" onClick={() => setGame(true)}></Play>
+          <Play
+            text="Play"
+            onClick={() => setGame(true)}
+            disabled={isPlayDisabled}
+          ></Play>
         )}
 
         <Out text="strikes"></Out>
@@ -32,9 +58,15 @@ function App() {
         <Balls></Balls>
         {menu ? <Modal onClick={() => setMenu(false)}></Modal> : null}
         {menu ? null : <Grid values={values} rhe={rhe}></Grid>}
-        <Team name="visitor team"></Team>
+        <Team
+          name={teamNames.visitorTeam}
+          onChange={(name) => handleTeamNameChange("visitorTeam", name)}
+        ></Team>
         {menu ? null : <Grid values={emptyValues} rhe={emptyRHE}></Grid>}
-        <Team name="local team"></Team>
+        <Team
+          name={teamNames.localTeam}
+          onChange={(name) => handleTeamNameChange("localTeam", name)}
+        ></Team>
         {menu ? null : <Grid values={emptyValues} rhe={emptyRHE}></Grid>}
         <div className="col-span-full row-span-3 bg-orange-500"></div>
       </div>
