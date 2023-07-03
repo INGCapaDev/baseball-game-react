@@ -4,6 +4,4 @@ import App from "./principal/App.jsx";
 import "./index.css";
 import Players from "./players/Players.jsx";
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <Players></Players>
-);
+ReactDOM.createRoot(document.getElementById("root")).render(<App></App>);
