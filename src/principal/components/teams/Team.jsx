@@ -10,7 +10,11 @@ const Team = (props) => {
       <button
         ref={teamRef}
         className="col-span-6 flex min-w-[auto] items-center bg-black"
-        onClick={props?.onClick}
+        onClick={() => {
+          setTimeout(() => {
+            props?.onClick();
+          }, 200);
+        }}
         disabled={props?.disabled}
       >
         <span className="min-w-max pl-2 text-[6vh] font-bold uppercase text-white">
