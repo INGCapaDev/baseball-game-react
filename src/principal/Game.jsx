@@ -12,7 +12,7 @@ const emptyValues = ["", "", "", "", "", "", "", "", ""];
 const rhe = ["r", "h", "e"];
 const emptyRHE = ["", "", ""];
 
-function App() {
+function Game({ handlePlayersView }) {
   const [game, setGame] = useState(false);
   const [menu, setMenu] = useState(false);
   const [teamNames, setTeamNames] = useState({
@@ -61,11 +61,13 @@ function App() {
         <Team
           name={teamNames.visitorTeam}
           onChange={(name) => handleTeamNameChange("visitorTeam", name)}
+          onClick={() => handlePlayersView(teamNames.visitorTeam)}
         ></Team>
         {menu ? null : <Grid values={emptyValues} rhe={emptyRHE}></Grid>}
         <Team
           name={teamNames.localTeam}
           onChange={(name) => handleTeamNameChange("localTeam", name)}
+          onClick={() => handlePlayersView(teamNames.localTeam)}
         ></Team>
         {menu ? null : <Grid values={emptyValues} rhe={emptyRHE}></Grid>}
         <div className="col-span-full row-span-3 bg-orange-500"></div>
@@ -73,4 +75,4 @@ function App() {
     </>
   );
 }
-export default App;
+export default Game;

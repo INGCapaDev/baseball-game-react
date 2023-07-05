@@ -10,9 +10,12 @@ const TopBar = (props) => {
         </span>
       </div>
       <Team name={props.team}></Team>
-      <div className="col-span-1 flex  items-center justify-center overflow-hidden">
+      <button
+        className="col-span-1 flex  items-center justify-center overflow-hidden"
+        onClick={props?.closeView}
+      >
         <img src="img/rounded-x.svg" alt="" className="h-[90%]" />
-      </div>
+      </button>
       <div className="col-span-1 flex items-center justify-center">
         <Heading text="ptc"></Heading>
       </div>
