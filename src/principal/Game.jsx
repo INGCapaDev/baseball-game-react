@@ -62,14 +62,14 @@ function Game({ handlePlayersView }) {
         {menu ? null : <Grid values={values} rhe={rhe}></Grid>}
         <Team
           name={teamNames.visitorTeam}
-          onChange={(name) => handleTeamNameChange("visitorTeam", name)}
           onClick={() => handlePlayersView(teamNames.visitorTeam)}
+          disabled={isPlayDisabled}
         ></Team>
         {menu ? null : <Grid values={emptyValues} rhe={emptyRHE}></Grid>}
         <Team
           name={teamNames.localTeam}
-          onChange={(name) => handleTeamNameChange("localTeam", name)}
           onClick={() => handlePlayersView(teamNames.localTeam)}
+          disabled={isPlayDisabled}
         ></Team>
         {menu ? null : <Grid values={emptyValues} rhe={emptyRHE}></Grid>}
         <div className="col-span-full row-span-3 bg-orange-500"></div>
