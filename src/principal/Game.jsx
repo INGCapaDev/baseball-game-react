@@ -38,7 +38,9 @@ function Game({ handlePlayersView }) {
       <div className="container-grid grid-fullscreen m-1 grid gap-1">
         <div className="col-span-6 row-span-4 bg-orange-300"></div>
         <Out text="Out"></Out>
+
         <Button img="settings.svg"></Button>
+
         {game ? (
           <Play
             text="Jugada"
