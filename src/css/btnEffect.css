@@ -3,7 +3,7 @@
   overflow: hidden;
 
   --effect-name: ripple;
-  --effect-duration: 500ms;
+  --effect-duration: 200ms;
   --effect-top: 0px;
   --effect-left: 0px;
   --effect-height: 100px;
