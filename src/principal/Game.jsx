@@ -13,7 +13,12 @@ const rhe = ["r", "h", "e"];
 const emptyRHE = ["", "", ""];
 
 function Game({ handlePlayersView }) {
-  const [game, setGame] = useState(false);
+  const localCheckGame =
+    sessionStorage.getItem("gameValue") === null
+      ? false
+      : sessionStorage.getItem("gameValue") === "true";
+
+  const [game, setGame] = useState(localCheckGame);
   const [menu, setMenu] = useState(false);
   const [teamNames, setTeamNames] = useState({
     // visitorTeam: "visitor team",
@@ -33,6 +38,11 @@ function Game({ handlePlayersView }) {
     teamNames.visitorTeam === "visitor team" ||
     teamNames.localTeam === "local team";
 
+  const handleGame = (game) => {
+    setGame(true);
+    sessionStorage.setItem("gameValue", game);
+  };
+
   return (
     <>
       <div className="container-grid grid-fullscreen m-1 grid gap-1">
@@ -50,7 +60,7 @@ function Game({ handlePlayersView }) {
         ) : (
           <Play
             text="Play"
-            onClick={() => setGame(true)}
+            onClick={() => handleGame(true)}
             disabled={isPlayDisabled}
           ></Play>
         )}
