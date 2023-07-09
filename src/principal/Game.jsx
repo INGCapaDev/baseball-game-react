@@ -6,82 +6,73 @@ import Modal from "./components/modal/Modal";
 import Out from "./components/outs/Out";
 import Play from "./components/play/Play";
 import Team from "./components/teams/Team";
+import { useDispatch, useSelector } from "react-redux";
+import { useAudio } from "../context/audio.context";
+import { gameSlice } from "../redux/reducers/gameSlice";
 
 const values = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-const emptyValues = ["", "", "", "", "", "", "", "", ""];
 const rhe = ["r", "h", "e"];
 const emptyRHE = ["", "", ""];
 
 function Game({ handlePlayersView }) {
-  const localCheckGame =
-    sessionStorage.getItem("gameValue") === null
-      ? false
-      : sessionStorage.getItem("gameValue") === "true";
+  const initedGame = useSelector((state) => state.game.inited)
+  const careers = useSelector((state) => state.game.careers)
+  const visitors = useSelector((state) => state.visitors)
+  const locals = useSelector((state) => state.locals)
 
-  const [game, setGame] = useState(localCheckGame);
-  const [menu, setMenu] = useState(false);
-  const [teamNames, setTeamNames] = useState({
-    // visitorTeam: "visitor team",
-    // localTeam: "local team",
-    visitorTeam: "Guadalajara",
-    localTeam: "Monterrey",
-  });
+  const dispatch = useDispatch()
+  const { playSound } = useAudio();
+  const [showJugadas, setShowJugadas] = useState(false);
 
-  const handleTeamNameChange = (teamType, name) => {
-    setTeamNames((prevState) => ({
-      ...prevState,
-      [teamType]: name,
-    }));
-  };
+  const pressPlayButton = () => {
+    if(initedGame) {
+      playSound("hit");
+      setShowJugadas(true)
+    }else{
+      dispatch(gameSlice.actions.initGame())
+      playSound("hit");
+    }
+  }
 
-  const isPlayDisabled =
-    teamNames.visitorTeam === "visitor team" ||
-    teamNames.localTeam === "local team";
-
-  const handleGame = (game) => {
-    setGame(true);
-    sessionStorage.setItem("gameValue", game);
-  };
+  const closeAction = () => {
+    setShowJugadas(false)
+  }
 
   return (
     <>
       <div className="container-grid grid-fullscreen m-1 grid gap-1">
         <div className="col-span-6 row-span-4 bg-orange-300"></div>
-        <Out text="Out"></Out>
+        <Out text="Out" />
 
         <Button img="settings.svg"></Button>
 
-        {game ? (
-          <Play
-            text="Jugada"
-            onClick={() => setMenu(true)}
-            disabled={isPlayDisabled}
-          ></Play>
-        ) : (
-          <Play
-            text="Play"
-            onClick={() => handleGame(true)}
-            disabled={isPlayDisabled}
-          ></Play>
-        )}
+        <Play
+          text={initedGame ? "JUGADA" : "JUGAR"}
+          onClick={pressPlayButton}
+        />
 
-        <Out text="strikes"></Out>
+        <Out text="strikes" />
         <Button img="back.svg"></Button>
-        <Balls></Balls>
-        {menu ? <Modal onClick={() => setMenu(false)}></Modal> : null}
-        {menu ? null : <Grid values={values} rhe={rhe}></Grid>}
+        <Balls />
+
+        {showJugadas ? <Modal onClose={closeAction} /> : null}
+        {showJugadas ? null : <Grid values={values} rhe={rhe} />}
+
         <Team
-          name={teamNames.visitorTeam}
-          onClick={() => handlePlayersView(teamNames.visitorTeam)}
-          disabled={isPlayDisabled}
-        ></Team>
-        {menu ? null : <Grid values={emptyValues} rhe={emptyRHE}></Grid>}
+          name={visitors.team_name}
+          onClick={() => handlePlayersView(visitors.team_name)}
+          disabled={initedGame}
+        />
+
+        {showJugadas ? null : <Grid values={careers.map(({ visitors }) => visitors)} rhe={emptyRHE} />}
+        
         <Team
-          name={teamNames.localTeam}
-          onClick={() => handlePlayersView(teamNames.localTeam)}
-          disabled={isPlayDisabled}
-        ></Team>
-        {menu ? null : <Grid values={emptyValues} rhe={emptyRHE}></Grid>}
+          name={locals.team_name}
+          onClick={() => handlePlayersView(locals.team_name)}
+          disabled={initedGame}
+        />
+
+        {showJugadas ? null : <Grid values={careers.map(({ locals }) => locals)} rhe={emptyRHE} />}
         <div className="col-span-full row-span-3 bg-orange-500"></div>
       </div>
     </>

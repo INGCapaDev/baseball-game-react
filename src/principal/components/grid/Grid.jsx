@@ -1,13 +1,16 @@
+import { useId } from "react";
 import GridItems from "./components/GridItems";
 
 const Grid = (props) => {
+  const id = useId()
   const values = props.values;
   const rhe = props.rhe;
-  const items = values.map((value) => (
-    <GridItems key={value} value={value}></GridItems>
+
+  const items = values.map((value, index) => (
+    <GridItems key={`${id}-v-${index}`} value={value}></GridItems>
   ));
-  const itemsRHE = rhe.map((value) => (
-    <GridItems key={value} value={value}></GridItems>
+  const itemsRHE = rhe.map((value, index) => (
+    <GridItems key={`${id}-rhe-${index}`} value={value}></GridItems>
   ));
 
   return (

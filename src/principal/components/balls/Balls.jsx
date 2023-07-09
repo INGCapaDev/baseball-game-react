@@ -1,6 +1,10 @@
+import { useSelector } from "react-redux";
 import Field from "../outs/components/Field";
 
 const Balls = () => {
+  const turn = useSelector((state) => state.game.turn);
+  const at_bat = useSelector((state) => state[turn]?.at_bat);
+
   return (
     <div className="col-span-12 grid grid-cols-12 bg-black">
       <div className="col-span-3 flex justify-between bg-black">
@@ -16,10 +20,11 @@ const Balls = () => {
         <Field></Field>
         <Field></Field>
       </div>
-      <div className="col-span-5 bg-black">
+      <div className="col-span-5 bg-black flex flex-col">
         <span className="pl-1 text-[3vh] font-bold uppercase text-white">
           AT BAT
         </span>
+        <span className="text-white text-[4vh] pl-4">{at_bat?.batter?.name}</span>
       </div>
     </div>
   );

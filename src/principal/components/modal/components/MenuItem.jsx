@@ -1,6 +1,6 @@
 const MenuItem = (props) => {
   return (
-    <div>
+    <div onClick={props.onClick}>
       <div className="group flex items-baseline justify-start space-x-2 hover:cursor-pointer">
         <span className="text-[6vh] font-bold leading-[1.125] text-white group-hover:text-orange-300">
           +
@@ -12,4 +12,5 @@ const MenuItem = (props) => {
     </div>
   );
 };
+
 export default MenuItem;
