@@ -55,7 +55,7 @@ export const visitorsSlice = createSlice({
     }
   },
   extraReducers: (builder) => {
-    builder.addCase(gameSlice.actions.initGame, (state, action) => {
+    builder.addCase(gameSlice.actions.initGame, (state) => {
       state.at_bat = {
         index: 0,
         batter: state.batters[0]
@@ -73,5 +73,4 @@ export const visitorsSlice = createSlice({
 
 export const getBatters = createSelector(
   (state) => state.visitors.batters
-  
 )

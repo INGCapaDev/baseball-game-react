@@ -1,4 +1,4 @@
-import { useContext, useEffect, createContext, useState } from "react";
+import { useContext, useEffect, createContext } from "react";
 import audiosHit from "../utils/audio";
 
 const audios = {
@@ -12,19 +12,6 @@ const audios = {
 const AudioContext = createContext({});
 
 const AudioContextProvider = (props) => {
-  async function loadBGAudio() {
-    const audioElement = document.querySelector('#bg-audio')
-    audioElement.play()
-    audioElement.volume = 0.3
-    audioElement.addEventListener('ended', function() {
-      this.currentTime = 0;
-      this.play();
-    }, false);
-  }
-
-  useEffect(() => {
-    loadBGAudio();
-  }, []);
 
   const openActions = async () => {
     const audio = new Audio(audios.hit)
@@ -47,8 +34,8 @@ const AudioContextProvider = (props) => {
   const playHitAudio = async (outs, action) => {
     const audio = audiosHit.playAudio(outs, action);
     if (audio) {
-      const audio = new Audio(audio)
-      audio.play()
+      const audio_b = new Audio(audio)
+      audio_b.play()
     }
   };
 

@@ -7,7 +7,6 @@ type PlayAudio = {
   ball: any;
 };
 
-
 const audioFunc =
   (yellow: number, blue: number, red: number, nextAudio?: PlayAudio) =>
   (outs: number, action: "ball" | "strike") => {

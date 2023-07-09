@@ -18,11 +18,6 @@ const App = () => {
   return (
     <Provider store={store}>
       <AudioContextProvider>
-        <audio style={{ display: 'none' }} id="bg-audio" autoPlay>
-          <track src="captions_en.vtt" kind="captions" label="english_captions"></track>
-          <source src="/assets/audio/PUBLICO_FONDO.mp3" type="audio/mp3"></source>
-        </audio>
-
         {players ? (
           <Players teamname={team} closeView={() => setPlayer(false)} />
         ) : (

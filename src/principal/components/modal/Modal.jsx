@@ -16,6 +16,7 @@ const Modal = ({ onClose }) => {
     makePlay(
       gameSlice.actions.simple({
         at_bat,
+        turn
       })
     );
   };
@@ -24,6 +25,7 @@ const Modal = ({ onClose }) => {
     playSound("hit");
     makePlay(gameSlice.actions.double({
       at_bat,
+      turn
     }));
   };
 
@@ -31,6 +33,7 @@ const Modal = ({ onClose }) => {
     playSound("hit");
     makePlay(gameSlice.actions.triple({
       at_bat,
+      turn
     }));
   };
 
@@ -59,6 +62,7 @@ const Modal = ({ onClose }) => {
   const base = () => {
     makePlay(gameSlice.actions.basePerBall({
       at_bat,
+      turn
     }));
   };
 
