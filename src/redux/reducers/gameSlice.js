@@ -173,9 +173,9 @@ export const gameSlice = createSlice({
     changeTurn: (state, action) => {
       (state.outs = 0), (state.strikes = 0);
       state.bases = [null, null, null];
+      state.turn = action.payload.turn;
       state.entrance =
         action.payload.turn == "visitors" ? state.entrance + 1 : state.entrance;
-      state.turn = action.payload.turn;
     },
     ball: (state, action) => {
       let _bases = [...state.bases];
