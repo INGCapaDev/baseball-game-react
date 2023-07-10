@@ -9,40 +9,45 @@ import Team from "./components/teams/Team";
 import { useDispatch, useSelector } from "react-redux";
 import { useAudio } from "../context/audio.context";
 import { gameSlice } from "../redux/reducers/gameSlice";
+import Strike from "./components/strikes/Strike";
 
 const values = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const rhe = ["r", "h", "e"];
 const emptyRHE = ["", "", ""];
 
 function Game({ handlePlayersView }) {
-  const initedGame = useSelector((state) => state.game.inited)
-  const careers = useSelector((state) => state.game.careers)
-  const visitors = useSelector((state) => state.visitors)
-  const locals = useSelector((state) => state.locals)
+  const initedGame = useSelector((state) => state.game.inited);
+  const careers = useSelector((state) => state.game.careers);
+  const visitors = useSelector((state) => state.visitors);
+  const locals = useSelector((state) => state.locals);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { playSound } = useAudio();
   const [showJugadas, setShowJugadas] = useState(false);
 
   const pressPlayButton = () => {
-    if(initedGame) {
+    if (initedGame) {
       playSound("hit");
-      setShowJugadas(true)
-    }else{
-      dispatch(gameSlice.actions.initGame())
+      setShowJugadas(true);
+    } else {
+      dispatch(gameSlice.actions.initGame());
       playSound("hit");
     }
-  }
+  };
 
   const closeAction = () => {
-    setShowJugadas(false)
-  }
+    setShowJugadas(false);
+  };
 
   return (
     <>
       <div className="container-grid grid-fullscreen m-1 grid gap-1">
         <div className="col-span-6 row-span-4 bg-orange-300">
-          <img src="/img/logo_app_bs.png" className="w-full h-full object-contain" alt="logo" />
+          <img
+            src="/img/logo_app_bs.png"
+            className="w-full h-full object-contain"
+            alt="logo"
+          />
         </div>
         <Out text="Out" />
 
@@ -53,7 +58,7 @@ function Game({ handlePlayersView }) {
           onClick={pressPlayButton}
         />
 
-        <Out text="strikes" />
+        <Strike text="strikes" />
         <Button img="back.svg"></Button>
         <Balls />
 
@@ -66,15 +71,22 @@ function Game({ handlePlayersView }) {
           disabled={initedGame}
         />
 
-        {showJugadas ? null : <Grid values={careers.map(({ visitors }) => visitors)} rhe={emptyRHE} />}
-        
+        {showJugadas ? null : (
+          <Grid
+            values={careers.map(({ visitors }) => visitors)}
+            rhe={emptyRHE}
+          />
+        )}
+
         <Team
           name={locals.team_name}
           onClick={() => handlePlayersView(locals.team_name)}
           disabled={initedGame}
         />
 
-        {showJugadas ? null : <Grid values={careers.map(({ locals }) => locals)} rhe={emptyRHE} />}
+        {showJugadas ? null : (
+          <Grid values={careers.map(({ locals }) => locals)} rhe={emptyRHE} />
+        )}
         <div className="col-span-full row-span-3 bg-orange-500"></div>
       </div>
     </>

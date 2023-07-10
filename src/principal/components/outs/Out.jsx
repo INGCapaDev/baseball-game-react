@@ -1,6 +1,9 @@
+import { useSelector } from "react-redux";
 import Field from "./components/Field";
 
 const Out = (props) => {
+  const outs = useSelector((state) => state.game.outs);
+
   return (
     <div className="col-span-6 grid grid-cols-6 bg-black">
       <div className="col-span-3 flex justify-between bg-black">
@@ -11,9 +14,9 @@ const Out = (props) => {
         </div>
       </div>
       <div className="col-span-3 grid grid-cols-3 gap-1 bg-black">
-        <Field></Field>
-        <Field></Field>
-        <Field></Field>
+        <Field bgColor={outs > 0 ? "bg-red-500" : "bg-white"}></Field>
+        <Field bgColor={outs > 1 ? "bg-red-500" : "bg-white"}></Field>
+        <Field bgColor={outs > 2 ? "bg-red-500" : "bg-white"}></Field>
       </div>
     </div>
   );

@@ -7,11 +7,11 @@ import { store } from "./redux/store";
 import AudioContextProvider from "./context/audio.context";
 
 const App = () => {
-  const [players, setPlayer] = useState(false);
+  const [players, setPlayers] = useState(false);
   const [team, setTeam] = useState("team");
 
   const handlePlayersView = (teamname) => {
-    setPlayer(true);
+    setPlayers(true);
     setTeam(teamname);
   };
 
@@ -19,7 +19,7 @@ const App = () => {
     <Provider store={store}>
       <AudioContextProvider>
         {players ? (
-          <Players teamname={team} closeView={() => setPlayer(false)} />
+          <Players teamname={team} closeView={() => setPlayers(false)} />
         ) : (
           <Game handlePlayersView={handlePlayersView} />
         )}
