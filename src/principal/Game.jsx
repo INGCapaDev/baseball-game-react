@@ -9,7 +9,7 @@ import Team from "./components/teams/Team";
 import { useDispatch, useSelector } from "react-redux";
 import { useAudio } from "../context/audio.context";
 import { gameSlice } from "../redux/reducers/gameSlice";
-import Strikes from "./components/strikes/Strikes";
+import Strike from "./components/strikes/Strike";
 
 const values = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const rhe = ["r", "h", "e"];
@@ -58,7 +58,7 @@ function Game({ handlePlayersView }) {
           onClick={pressPlayButton}
         />
 
-        <Strikes text="strikes" />
+        <Strike text="strikes" />
         <Button img="back.svg"></Button>
         <Balls />
 
