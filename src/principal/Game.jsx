@@ -70,7 +70,7 @@ function Game({ handlePlayersView }) {
 
         <Team
           name={visitors.team_name}
-          onClick={() => handlePlayersView(visitors.team_name)}
+          onClick={() => handlePlayersView(visitors.team_name, "visitors")}
           disabled={initedGame}
         />
 
@@ -83,7 +83,7 @@ function Game({ handlePlayersView }) {
 
         <Team
           name={locals.team_name}
-          onClick={() => handlePlayersView(locals.team_name)}
+          onClick={() => handlePlayersView(locals.team_name, "locals")}
           disabled={initedGame}
         />
 

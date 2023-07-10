@@ -2,8 +2,14 @@ import { useRef } from "react";
 import Heading from "./components/Heading";
 import Team from "./components/Team";
 import { useClickAnimation } from "../../../hooks/useClickAnimation";
+import { useDispatch } from "react-redux";
+import { localsSlice } from "../../../redux/reducers/localsSlice";
+import { visitorsSlice } from "../../../redux/reducers/visitorsSlice";
+import { useState } from "react";
 
 const TopBar = (props) => {
+  const [team, setTeam] = useState(props?.team);
+  const dispatch = useDispatch();
   const closeRef = useRef();
   useClickAnimation(closeRef, {});
   return (
@@ -13,7 +19,7 @@ const TopBar = (props) => {
           Team name:
         </span>
       </div>
-      <Team name={props.team}></Team>
+      <Team name={team} handleTeam={(value) => setTeam(value)}></Team>
       <div className="col-span-1 flex items-center justify-center overflow-hidden">
         <button
           className="overflow-hidden h-full rounded-full"
@@ -22,6 +28,13 @@ const TopBar = (props) => {
             setTimeout(() => {
               props?.closeView();
             }, 200);
+
+            if (props?.teamvalue == "locals") {
+              dispatch(localsSlice.actions.changeTeamName(team));
+            }
+            if (props?.teamvalue == "visitors") {
+              dispatch(visitorsSlice.actions.changeTeamName(team));
+            }
           }}
         >
           <img src="img/rounded-x.svg" alt="" className="h-[90%]" />

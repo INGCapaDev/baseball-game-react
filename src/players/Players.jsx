@@ -2,11 +2,11 @@ import Pitcher from "./components/pitcher/Pitcher";
 import Player from "./components/player/Player";
 import TopBar from "./components/topbar/TopBar";
 
-const Players = ({ teamname, closeView }) => {
+const Players = ({ teamname, closeView, team }) => {
   return (
     <>
       <div className="players-grid grid-fullscreen m-1 grid gap-1">
-        <TopBar team={teamname} closeView={closeView}></TopBar>
+        <TopBar team={teamname} closeView={closeView} teamvalue={team}></TopBar>
         <Player name="c. bremer" position="d" ptc=".600"></Player>
         <Pitcher name="j. blendl"></Pitcher>
         <Player name="armendariz" position="d" ptc=".600"></Player>
