@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import Field from "../outs/components/Field";
+import Field from "../common/Field";
 import { useAudio } from "../../../context/audio.context";
 import { gameSlice } from "../../../redux/reducers/gameSlice";
 
