@@ -18,7 +18,7 @@ const Balls = () => {
   const { playHitAudio } = useAudio();
 
   const markBall = (index) => () => {
-    if (inited){
+    if (inited) {
       if (index == balls) {
         playHitAudio(outs, "ball");
         dispatch(

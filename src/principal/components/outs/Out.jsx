@@ -14,9 +14,9 @@ const Out = (props) => {
         </div>
       </div>
       <div className="col-span-3 grid grid-cols-3 gap-1 bg-black">
-        <Field bgColor={outs >= 1 ? "bg-danger-500" : "bg-white"} />
-        <Field bgColor={outs >= 2 ? "bg-danger-500" : "bg-white"} />
-        <Field bgColor={outs >= 3 ? "bg-danger-500" : "bg-white"} />
+        <Field bgColor={outs > 0 ? "bg-red-500" : "bg-white"}></Field>
+        <Field bgColor={outs > 1 ? "bg-red-500" : "bg-white"}></Field>
+        <Field bgColor={outs > 2 ? "bg-red-500" : "bg-white"}></Field>
       </div>
     </div>
   );
