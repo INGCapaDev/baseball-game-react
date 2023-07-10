@@ -2,11 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
 import MenuItem from "./components/MenuItem";
 import { useAudio } from "../../../context/audio.context";
 import { gameSlice } from "../../../redux/reducers/gameSlice";
-import { useEffect } from "react";
 
 const Modal = ({ onClose }) => {
   const dispatch = useDispatch();
-  const { turn, outs } = useSelector((state) => state.game);
+  const { turn } = useSelector((state) => state.game);
   const { playSound, resetHitAudio } = useAudio();
 
   const at_bat = useSelector((state) => state[turn]?.at_bat);
@@ -16,25 +15,29 @@ const Modal = ({ onClose }) => {
     makePlay(
       gameSlice.actions.simple({
         at_bat,
-        turn
+        turn,
       })
     );
   };
 
   const double = () => {
     playSound("hit");
-    makePlay(gameSlice.actions.double({
-      at_bat,
-      turn
-    }));
+    makePlay(
+      gameSlice.actions.double({
+        at_bat,
+        turn,
+      })
+    );
   };
 
   const triple = () => {
     playSound("hit");
-    makePlay(gameSlice.actions.triple({
-      at_bat,
-      turn
-    }));
+    makePlay(
+      gameSlice.actions.triple({
+        at_bat,
+        turn,
+      })
+    );
   };
 
   const homerun = () => {
@@ -51,37 +54,30 @@ const Modal = ({ onClose }) => {
     );
   };
 
+  // eslint-disable-next-line no-unused-vars
   const deleteAll = () => {
     makePlay(
       gameSlice.actions.deleteAll({
         turn,
       })
-    )
-  }
+    );
+  };
 
   const base = () => {
-    makePlay(gameSlice.actions.basePerBall({
-      at_bat,
-      turn
-    }));
+    makePlay(
+      gameSlice.actions.basePerBall({
+        at_bat,
+        turn,
+      })
+    );
   };
 
   const makePlay = (play) => {
     resetHitAudio();
     dispatch(play);
-    onClose()
+    onClose();
     return play;
   };
-
-  useEffect(() => {
-    if (outs == 3) {
-      makePlay(
-        gameSlice.actions.changeTurn({
-          turn: turn == "visitors" ? "locals" : "visitors",
-        })
-      );
-    }
-  }, [outs, turn]);
 
   return (
     <div className="relative col-span-12 row-span-3 flex items-center bg-black">
