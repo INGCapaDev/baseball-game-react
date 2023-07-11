@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import MenuItem from "./components/MenuItem";
 import { useAudio } from "../../../context/audio.context";
 import { gameSlice } from "../../../redux/reducers/gameSlice";
+import MenuItemBase from "./components/MenuItemBase";
 
 const Modal = ({ onClose }) => {
   const dispatch = useDispatch();
@@ -100,8 +101,10 @@ const Modal = ({ onClose }) => {
       <div className="ml-5 flex flex-col">
         <MenuItem text="out" onClick={out}></MenuItem>
         <MenuItem text="base por bola" onClick={base}></MenuItem>
-        <MenuItem text="corredor eliminado"></MenuItem>
-        <MenuItem text="en 1a 2a 3a"></MenuItem>
+        <MenuItemBase
+          options={["1ra", "2da", "3ra"]}
+          text="corredor eliminado"
+        />
       </div>
     </div>
   );
