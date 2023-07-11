@@ -67,6 +67,8 @@ export const visitorsSlice = createSlice({
     builder.addCase(gameSlice.actions.double, setNextBatter);
     builder.addCase(gameSlice.actions.triple, setNextBatter);
     builder.addCase(gameSlice.actions.changeTurn, setNextBatter);
+    builder.addCase(gameSlice.actions.homeRun, setNextBatter);
+    builder.addCase(gameSlice.actions.basePerBall, setNextBatter);
   },
 });
 

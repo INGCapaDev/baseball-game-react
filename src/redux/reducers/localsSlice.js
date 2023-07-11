@@ -21,6 +21,20 @@ const getNextBatterIndex = (at_bat, batters) => {
   return index + 1 <= batters.length ? index + 1 : 0;
 };
 
+const getAtBat = (at_bat, batters) => {
+  const newIndex = getNextBatterIndex(at_bat, batters);
+  return {
+    index: newIndex,
+    batter: batters[newIndex],
+  };
+};
+
+const setNextBatter = (state, action) => {
+  if (action.payload.turn == LOCAL_SLICE_NAME) {
+    state.at_bat = getAtBat(state.at_bat, state.batters);
+  }
+};
+
 export const localsSlice = createSlice({
   name: LOCAL_SLICE_NAME,
   initialState: {
@@ -40,24 +54,12 @@ export const localsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(gameSlice.actions.out, (state, action) => {
-      if (action.payload.turn == LOCAL_SLICE_NAME) {
-        const newIndex = getNextBatterIndex(state.at_bat, state.batters);
-        state.at_bat = {
-          index: newIndex,
-          batter: state.batters[newIndex],
-        };
-      }
-    });
-
-    builder.addCase(gameSlice.actions.changeTurn, (state, action) => {
-      if (action.payload.turn == LOCAL_SLICE_NAME) {
-        const newIndex = getNextBatterIndex(state.at_bat, state.batters);
-        state.at_bat = {
-          index: newIndex,
-          batter: state.batters[newIndex],
-        };
-      }
-    });
+    builder.addCase(gameSlice.actions.out, setNextBatter);
+    builder.addCase(gameSlice.actions.simple, setNextBatter);
+    builder.addCase(gameSlice.actions.double, setNextBatter);
+    builder.addCase(gameSlice.actions.triple, setNextBatter);
+    builder.addCase(gameSlice.actions.changeTurn, setNextBatter);
+    builder.addCase(gameSlice.actions.homeRun, setNextBatter);
+    builder.addCase(gameSlice.actions.basePerBall, setNextBatter);
   },
 });
