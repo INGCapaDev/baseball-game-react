@@ -42,6 +42,8 @@ export const gameSlice = createSlice({
       state.careers[state.entrance][state.turn] += count;
 
       state.bases = [null, null, null];
+      state.balls = 0;
+      state.strikes = 0;
     },
     simple: (state, action) => {
       let _bases = [...state.bases];
