@@ -84,7 +84,7 @@ const Modal = ({ onClose }) => {
   };
 
   return (
-    <div className="relative col-span-12 row-span-3 flex items-center bg-black">
+    <div className="relative col-span-12 row-span-3 flex items-center bg-black shadow-modal">
       <button
         className="absolute right-1 top-1 hover:animate-pulse hover:cursor-pointer"
         onClick={onClose}

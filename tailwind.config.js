@@ -6,6 +6,9 @@ export default {
       fontFamily: {
         chalk: ["Chalkduster"],
       },
+      boxShadow: {
+        modal: "inset 0 0 8px 8px rgba(214,148,17,1);",
+      },
     },
   },
   plugins: [],
