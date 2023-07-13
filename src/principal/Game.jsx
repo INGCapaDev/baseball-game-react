@@ -12,6 +12,7 @@ import { gameSlice } from "../redux/reducers/gameSlice";
 import Strike from "./components/strikes/Strike";
 import useCheckOuts from "../hooks/useCheckOuts";
 import useCheckStrikes from "../hooks/useCheckStrikes";
+import Bases from "./components/bases/Bases";
 
 const values = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const rhe = ["r", "h", "e"];
@@ -92,7 +93,8 @@ function Game({ handlePlayersView }) {
         {showJugadas ? null : (
           <Grid values={careers.map(({ locals }) => locals)} rhe={emptyRHE} />
         )}
-        <div className="col-span-full row-span-3 bg-orange-500"></div>
+        <Bases />
+        <div className="col-span-12 row-span-3 bg-orange-500"></div>
       </div>
     </>
   );
