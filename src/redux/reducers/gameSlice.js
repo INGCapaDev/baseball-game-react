@@ -217,13 +217,7 @@ export const gameSlice = createSlice({
     strike: (state) => {
       if (!state.inited) return;
 
-      if (state.strikes + 1 == 3) {
-        state.strikes = 0;
-        state.balls = 0;
-        state.outs++;
-      } else {
-        state.strikes++;
-      }
+      state.strikes++;
     },
     eliminatePlayer: (state, action) => {
       if (!state.inited) return;

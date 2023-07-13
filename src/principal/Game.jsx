@@ -11,6 +11,7 @@ import { useAudio } from "../context/audio.context";
 import { gameSlice } from "../redux/reducers/gameSlice";
 import Strike from "./components/strikes/Strike";
 import useCheckOuts from "../hooks/useCheckOuts";
+import useCheckStrikes from "../hooks/useCheckStrikes";
 
 const values = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const rhe = ["r", "h", "e"];
@@ -41,6 +42,7 @@ function Game({ handlePlayersView }) {
   };
 
   useCheckOuts();
+  useCheckStrikes();
 
   return (
     <>
