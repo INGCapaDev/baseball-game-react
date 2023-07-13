@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const MenuItemBase = ({ text, options }) => {
+const MenuItemBase = ({ text, options, onClick }) => {
   const [spanColor, setSpanColor] = useState("text-white");
 
   const handleOptionHover = () => {
@@ -28,6 +28,7 @@ const MenuItemBase = ({ text, options }) => {
         {options.map((option, index) => (
           <button
             key={index}
+            onClick={() => onClick(index)}
             className="text-[6vh] font-bold leading-[1.125] text-white hover:text-orange-300 transition-colors duration-200"
             onMouseEnter={handleOptionHover}
             onMouseLeave={handleOptionLeave}

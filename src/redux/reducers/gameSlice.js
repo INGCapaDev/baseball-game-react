@@ -225,5 +225,23 @@ export const gameSlice = createSlice({
         state.strikes++;
       }
     },
+    eliminatePlayer: (state, action) => {
+      if (!state.inited) return;
+      let _bases = [...state.bases];
+
+      if (action.payload.base == 0) {
+        _bases[0] = null;
+      }
+
+      if (action.payload.base == 1) {
+        _bases[1] = null;
+      }
+
+      if (action.payload.base == 2) {
+        _bases[2] = null;
+      }
+
+      state.bases = _bases;
+    },
   },
 });

@@ -69,10 +69,21 @@ const Modal = ({ onClose }) => {
   };
 
   const base = () => {
+    playSound("hit");
     makePlay(
       gameSlice.actions.basePerBall({
         at_bat,
         turn,
+      })
+    );
+  };
+
+  const eliminatePlayer = (base) => {
+    playSound("hit");
+    makePlay(
+      gameSlice.actions.eliminatePlayer({
+        turn,
+        base,
       })
     );
   };
@@ -104,6 +115,7 @@ const Modal = ({ onClose }) => {
         <MenuItemBase
           options={["1ra", "2da", "3ra"]}
           text="corredor eliminado"
+          onClick={eliminatePlayer}
         />
       </div>
     </div>
