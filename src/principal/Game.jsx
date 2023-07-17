@@ -13,6 +13,7 @@ import Strike from "./components/strikes/Strike";
 import useCheckOuts from "../hooks/useCheckOuts";
 import useCheckStrikes from "../hooks/useCheckStrikes";
 import Bases from "./components/bases/Bases";
+import useCheckBalls from "../hooks/useCheckBalls";
 
 const values = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const rhe = ["r", "h", "e"];
@@ -44,6 +45,7 @@ function Game({ handlePlayersView }) {
 
   useCheckOuts();
   useCheckStrikes();
+  useCheckBalls();
 
   return (
     <>

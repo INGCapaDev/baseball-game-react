@@ -179,40 +179,9 @@ export const gameSlice = createSlice({
       state.entrance =
         action.payload.turn == "visitors" ? state.entrance + 1 : state.entrance;
     },
-    ball: (state, action) => {
-      let _bases = [...state.bases];
+    ball: (state) => {
       if (!state.inited) return;
-
-      if (state.balls + 1 == 4) {
-        state.balls = 0;
-
-        if (_bases[2] && _bases[1] && _bases[0]) {
-          _bases[2] = { ..._bases[1] };
-          _bases[1] = { ..._bases[0] };
-          _bases[0] = null;
-          state.careers[state.entrance][state.turn]++;
-        }
-
-        if (_bases[1] && _bases[0]) {
-          _bases[2] = { ..._bases[1] };
-          _bases[1] = { ..._bases[0] };
-
-          _bases[0] = null;
-        }
-
-        if (_bases[0]) {
-          _bases[1] = { ..._bases[0] };
-          _bases[0] = null;
-        }
-
-        _bases[0] = action.payload.at_bat;
-
-        state.bases = _bases;
-        state.balls = 0;
-        state.strikes = 0;
-      } else {
-        state.balls++;
-      }
+      state.balls++;
     },
     strike: (state) => {
       if (!state.inited) return;

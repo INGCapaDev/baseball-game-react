@@ -21,12 +21,7 @@ const Balls = () => {
     if (inited) {
       if (index == balls) {
         playHitAudio(outs, "ball");
-        dispatch(
-          gameSlice.actions.ball({
-            at_bat,
-            turn,
-          })
-        );
+        dispatch(gameSlice.actions.ball());
       }
     }
   };
