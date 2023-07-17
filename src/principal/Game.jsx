@@ -14,6 +14,7 @@ import useCheckOuts from "../hooks/useCheckOuts";
 import useCheckStrikes from "../hooks/useCheckStrikes";
 import Bases from "./components/bases/Bases";
 import useCheckBalls from "../hooks/useCheckBalls";
+import GridEntraces from "./components/grid/GridEntraces";
 
 const values = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const rhe = ["r", "h", "e"];
@@ -72,7 +73,7 @@ function Game({ handlePlayersView }) {
         <Balls />
 
         {showJugadas ? <Modal onClose={closeAction} /> : null}
-        {showJugadas ? null : <Grid values={values} rhe={rhe} />}
+        {showJugadas ? null : <GridEntraces values={values} rhe={rhe} />}
 
         <Team
           name={visitors.team_name}
