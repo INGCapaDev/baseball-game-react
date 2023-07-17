@@ -54,11 +54,16 @@ export const localsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder.addCase(gameSlice.actions.initGame, (state) => {
+      state.at_bat = {
+        index: 0,
+        batter: state.batters[0],
+      };
+    });
     builder.addCase(gameSlice.actions.out, setNextBatter);
     builder.addCase(gameSlice.actions.simple, setNextBatter);
     builder.addCase(gameSlice.actions.double, setNextBatter);
     builder.addCase(gameSlice.actions.triple, setNextBatter);
-    builder.addCase(gameSlice.actions.changeTurn, setNextBatter);
     builder.addCase(gameSlice.actions.homeRun, setNextBatter);
     builder.addCase(gameSlice.actions.basePerBall, setNextBatter);
   },
