@@ -147,18 +147,14 @@ export const gameSlice = createSlice({
     basePerBall: (state, action) => {
       let _bases = [...state.bases];
 
-      if (_bases[2] && _bases[1] && _bases[0]) {
-        _bases[2] = { ..._bases[1] };
-        _bases[1] = { ..._bases[0] };
-        _bases[0] = null;
+      if (_bases[2]) {
+        _bases[2] = null;
         state.careers[state.entrance][state.turn]++;
       }
 
-      if (_bases[1] && _bases[0]) {
+      if (_bases[1]) {
         _bases[2] = { ..._bases[1] };
-        _bases[1] = { ..._bases[0] };
-
-        _bases[0] = null;
+        _bases[1] = null;
       }
 
       if (_bases[0]) {
@@ -180,7 +176,6 @@ export const gameSlice = createSlice({
         action.payload.turn == "visitors" ? state.entrance + 1 : state.entrance;
     },
     ball: (state) => {
-      if (!state.inited) return;
       state.balls++;
     },
     strike: (state) => {
