@@ -18,7 +18,7 @@ const INIT_BATTERS = new Array(8).fill(1).map((_, index) => ({
 
 const getNextBatterIndex = (at_bat, batters) => {
   const index = at_bat.index;
-  return index + 1 <= batters.length ? index + 1 : 0;
+  return index + 1 < batters.length ? index + 1 : 0;
 };
 
 const getAtBat = (at_bat, batters) => {
