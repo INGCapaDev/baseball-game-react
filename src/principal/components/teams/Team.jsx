@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { useClickAnimation } from "../../../hooks/useClickAnimation";
+import { classNames } from "../../../utils/classes";
 
 const Team = (props) => {
   const teamRef = useRef();
@@ -9,7 +10,11 @@ const Team = (props) => {
     <>
       <button
         ref={teamRef}
-        className="col-span-6 flex min-w-[auto] items-center bg-black"
+        className={classNames(
+          "col-span-6 flex min-w-[auto] items-center transition-colors duration-200",
+          props?.bgColor,
+          props?.textColor
+        )}
         onClick={() => {
           setTimeout(() => {
             props?.onClick();
@@ -17,7 +22,7 @@ const Team = (props) => {
         }}
         disabled={props?.disabled}
       >
-        <span className="min-w-max pl-2 text-[6vh] font-bold uppercase text-white">
+        <span className="min-w-max pl-2 text-[6vh] font-bold uppercase">
           {props?.name}
         </span>
       </button>

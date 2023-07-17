@@ -24,6 +24,7 @@ function Game({ handlePlayersView }) {
   const careers = useSelector((state) => state.game.careers);
   const visitors = useSelector((state) => state.visitors);
   const locals = useSelector((state) => state.locals);
+  const turn = useSelector((state) => state.game.turn);
 
   const dispatch = useDispatch();
   const { playSound } = useAudio();
@@ -77,6 +78,8 @@ function Game({ handlePlayersView }) {
           name={visitors.team_name}
           onClick={() => handlePlayersView(visitors.team_name, "visitors")}
           disabled={initedGame}
+          bgColor={turn === "visitors" ? "bg-orange-500" : "bg-black"}
+          textColor={turn === "visitors" ? "text-black" : "text-white"}
         />
 
         {showJugadas ? null : (
@@ -90,6 +93,8 @@ function Game({ handlePlayersView }) {
           name={locals.team_name}
           onClick={() => handlePlayersView(locals.team_name, "locals")}
           disabled={initedGame}
+          bgColor={turn === "locals" ? "bg-orange-500" : "bg-black"}
+          textColor={turn === "locals" ? "text-black" : "text-white"}
         />
 
         {showJugadas ? null : (
