@@ -53,6 +53,9 @@ export const visitorsSlice = createSlice({
     changeTeamName: (state, action) => {
       state.team_name = action.payload;
     },
+    changeBatters: (state, action) => {
+      state.batters = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(gameSlice.actions.initGame, (state) => {

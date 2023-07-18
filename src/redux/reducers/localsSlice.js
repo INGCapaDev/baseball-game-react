@@ -8,7 +8,7 @@ const INIT_AT_BAT = {
   batter: null,
 };
 
-const INIT_BATTERS = new Array(8).fill(1).map((_, index) => ({
+const INIT_BATTERS = new Array(9).fill(1).map((_, index) => ({
   id: nanoid(),
   name: `BATEADOR ${index + 1}`,
   runs: 0,
@@ -51,6 +51,9 @@ export const localsSlice = createSlice({
     },
     changeTeamName: (state, action) => {
       state.team_name = action.payload;
+    },
+    changeBatters: (state, action) => {
+      state.batters = action.payload;
     },
   },
   extraReducers: (builder) => {

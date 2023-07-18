@@ -57,7 +57,7 @@ const Balls = () => {
         <span className="pl-1 text-[3vh] font-bold uppercase text-white">
           AT BAT
         </span>
-        <span className="text-white text-[4vh] pl-4">
+        <span className="text-white text-[4vh] pl-4 uppercase">
           {at_bat?.batter?.name}
         </span>
       </div>
