@@ -7,13 +7,14 @@ const GridEntraces = (props) => {
   const values = props.values;
   const rhe = props.rhe;
   const entrance = useSelector((state) => state.game.entrance);
+  const inited = useSelector((state) => state.game.inited);
 
   const items = values.map((value, index) => (
     <GridItems
       key={`${id}-v-${index}`}
       value={value}
       colors={
-        `${id}-v-${index}` === `${id}-v-${entrance}`
+        `${id}-v-${index}` === `${id}-v-${entrance}` && inited
           ? "bg-orange-500 text-black"
           : "bg-black text-white"
       }
