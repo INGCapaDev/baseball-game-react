@@ -32,10 +32,12 @@ const TopBar = (props) => {
             if (props?.teamvalue == "locals") {
               dispatch(localsSlice.actions.changeTeamName(team));
               dispatch(localsSlice.actions.changeBatters(props?.players));
+              dispatch(localsSlice.actions.changePitchers(props?.pitchers));
             }
             if (props?.teamvalue == "visitors") {
               dispatch(visitorsSlice.actions.changeTeamName(team));
               dispatch(visitorsSlice.actions.changeBatters(props?.players));
+              dispatch(visitorsSlice.actions.changePitchers(props?.pitchers));
             }
           }}
         >

@@ -11,6 +11,11 @@ const INIT_BATTERS = new Array(9).fill(1).map((_, index) => ({
   record: "",
 }));
 
+const INIT_PITCHERS = new Array(5).fill(1).map((_, index) => ({
+  id: nanoid(),
+  name: `PITCHER ${index + 1}`,
+}));
+
 const INIT_AT_BAT = {
   index: -1,
   batter: null,
@@ -41,6 +46,7 @@ export const visitorsSlice = createSlice({
     batters: INIT_BATTERS,
     team_name: "VISITOR",
     at_bat: INIT_AT_BAT,
+    pitchers: INIT_PITCHERS,
   },
   reducers: {
     changeBatterName: (state, action) => {
@@ -55,6 +61,9 @@ export const visitorsSlice = createSlice({
     },
     changeBatters: (state, action) => {
       state.batters = action.payload;
+    },
+    changePitchers: (state, action) => {
+      state.pitchers = action.payload;
     },
   },
   extraReducers: (builder) => {

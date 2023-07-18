@@ -1,6 +1,6 @@
 import Entry from "./components/Entry";
 
-const Player = ({ index, handleName, position, name, ptc }) => {
+const Player = ({ index, handleNamePlayer, position, name, ptc }) => {
   return (
     <>
       <div className="relative col-span-3 flex items-center bg-stone-800">
@@ -9,9 +9,9 @@ const Player = ({ index, handleName, position, name, ptc }) => {
         </span>
         <input
           type="text"
-          className="pl-2 font-chalk text-[5vh]  uppercase text-white bg-transparent border-none outline-none"
+          className="pl-2 font-chalk text-[5vh]  uppercase text-white bg-transparent border-none outline-none w-full h-full"
           value={name}
-          onChange={(e) => handleName(e.target.value, index)}
+          onChange={(e) => handleNamePlayer(e.target.value, index)}
         />
       </div>
       <div className="scores-grid col-span-5 grid  gap-1 bg-white">

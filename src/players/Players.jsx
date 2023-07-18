@@ -10,95 +10,61 @@ const Players = ({ teamname, closeView, team }) => {
   const playersCurrent = team === "locals" ? localPlayers : visitorsPlayers;
   const [players, setPlayers] = useState(playersCurrent);
 
-  const handleName = (name, index) => {
+  const localPitchers = useSelector((state) => state.locals.pitchers);
+  const visitorsPitchers = useSelector((state) => state.visitors.pitchers);
+  const pitchersCurrent = team === "locals" ? localPitchers : visitorsPitchers;
+  const [pitchers, setPitchers] = useState(pitchersCurrent);
+
+  const handleNamePlayer = (name, index) => {
     let newPlayers = [...players];
     newPlayers[index] = { ...newPlayers[index], name: name };
     setPlayers(newPlayers);
   };
 
+  const handleNamePitcher = (name, index) => {
+    let newPitchers = [...pitchers];
+    newPitchers[index] = { ...newPitchers[index], name: name };
+    setPitchers(newPitchers);
+  };
+
   return (
-    <>
-      <div className="players-grid grid-fullscreen m-1 grid gap-1">
-        <TopBar
-          team={teamname}
-          closeView={closeView}
-          teamvalue={team}
-          players={players}
-        ></TopBar>
-        <Player
-          index={0}
-          name={players[0]?.name}
-          position="d"
-          ptc=".600"
-          handleName={handleName}
-        ></Player>
-        <Pitcher name="j. blendl"></Pitcher>
-        <Player
-          index={1}
-          name={players[1]?.name}
-          position="d"
-          ptc=".600"
-          handleName={handleName}
-        ></Player>
-        <Pitcher name="kirem m."></Pitcher>
-        <Player
-          index={2}
-          name={players[2]?.name}
-          position="z"
-          ptc=".400"
-          handleName={handleName}
-        ></Player>
-        <Pitcher name="r. farias"></Pitcher>
-        <Player
-          index={3}
-          name={players[3]?.name}
-          position="d"
-          ptc=".600"
-          handleName={handleName}
-        ></Player>
-        <Pitcher name="c.cueva"></Pitcher>
-        <Player
-          index={4}
-          name={players[4]?.name}
-          position="d"
-          ptc=".400"
-          handleName={handleName}
-        ></Player>
-        <Pitcher name="m. flores"></Pitcher>
-        <Player
-          index={5}
-          name={players[5]?.name}
-          position="z"
-          ptc=".400"
-          handleName={handleName}
-        ></Player>
-        <Pitcher name=""></Pitcher>
-        <Player
-          index={6}
-          name={players[6]?.name}
-          position="d"
-          ptc=".200"
-          handleName={handleName}
-        ></Player>
-        <Pitcher name=""></Pitcher>
-        <Player
-          index={7}
-          name={players[7]?.name}
-          position="d"
-          ptc=".200"
-          handleName={handleName}
-        ></Player>
-        <Pitcher name=""></Pitcher>
-        <Player
-          index={8}
-          name={players[8]?.name}
-          position="z"
-          ptc=".750"
-          handleName={handleName}
-        ></Player>
-        <Pitcher name=""></Pitcher>
-      </div>
-    </>
+    <div className="players-grid grid-fullscreen m-1 grid gap-1">
+      <TopBar
+        team={teamname}
+        closeView={closeView}
+        teamvalue={team}
+        players={players}
+        pitchers={pitchers}
+      />
+      {players.map((player, index) => (
+        <>
+          <Player
+            key={players[index]?.id}
+            index={index}
+            name={player?.name}
+            position={index % 2 === 0 ? "d" : "z"}
+            ptc=".500"
+            handleNamePlayer={handleNamePlayer}
+          />
+          {index <= 4 ? (
+            <Pitcher
+              key={pitchers[index]?.id}
+              index={index}
+              name={pitchers[index]?.name}
+              handleNamePitcher={handleNamePitcher}
+              isDisable={false}
+            />
+          ) : (
+            <Pitcher
+              key={`pitcher-${index}`}
+              index={index}
+              name=""
+              isDisable={true}
+            />
+          )}
+        </>
+      ))}
+    </div>
   );
 };
 export default Players;
