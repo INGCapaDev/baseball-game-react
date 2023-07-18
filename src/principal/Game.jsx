@@ -18,7 +18,6 @@ import GridEntraces from "./components/grid/GridEntraces";
 
 const values = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const rhe = ["r", "h", "e"];
-const emptyRHE = ["", "", ""];
 
 function Game({ handlePlayersView }) {
   const initedGame = useSelector((state) => state.game.inited);
@@ -26,6 +25,7 @@ function Game({ handlePlayersView }) {
   const visitors = useSelector((state) => state.visitors);
   const locals = useSelector((state) => state.locals);
   const turn = useSelector((state) => state.game.turn);
+  const rheValues = useSelector((state) => state.game.rhe);
 
   const dispatch = useDispatch();
   const { playSound } = useAudio();
@@ -90,7 +90,7 @@ function Game({ handlePlayersView }) {
         {showJugadas ? null : (
           <Grid
             values={careers.map(({ visitors }) => visitors)}
-            rhe={emptyRHE}
+            rhe={initedGame ? rheValues.map(({ visitors }) => visitors) : []}
           />
         )}
 
@@ -107,7 +107,10 @@ function Game({ handlePlayersView }) {
         />
 
         {showJugadas ? null : (
-          <Grid values={careers.map(({ locals }) => locals)} rhe={emptyRHE} />
+          <Grid
+            values={careers.map(({ locals }) => locals)}
+            rhe={initedGame ? rheValues.map(({ locals }) => locals) : []}
+          />
         )}
         <Bases />
         <div className="col-span-12 row-span-3 bg-orange-500"></div>

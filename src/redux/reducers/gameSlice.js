@@ -28,10 +28,17 @@ export const gameSlice = createSlice({
         visitors: 0,
         locals: 0,
       }));
+      state.rhe = new Array(3).fill(1).map(() => ({
+        visitors: 0,
+        locals: 0,
+      }));
     },
     homeRun: (state) => {
+      state.rhe[1][state.turn]++;
+
       // carrera de bateador
       state.careers[state.entrance][state.turn]++;
+      state.rhe[0][state.turn]++;
 
       // carrera por bases
 
@@ -40,17 +47,21 @@ export const gameSlice = createSlice({
         0
       );
       state.careers[state.entrance][state.turn] += count;
+      state.rhe[0][state.turn] += count;
 
       state.bases = [null, null, null];
       state.balls = 0;
       state.strikes = 0;
     },
     simple: (state, action) => {
+      state.rhe[1][state.turn]++;
+
       let _bases = [...state.bases];
 
       if (_bases[2]) {
         _bases[2] = null;
         state.careers[state.entrance][state.turn]++;
+        state.rhe[0][state.turn]++;
       }
 
       if (_bases[1]) {
@@ -70,15 +81,20 @@ export const gameSlice = createSlice({
       state.strikes = 0;
     },
     double: (state, action) => {
+      state.rhe[1][state.turn]++;
+
       let _bases = [...state.bases];
 
       if (_bases[2]) {
         _bases[2] = null;
         state.careers[state.entrance][state.turn]++;
+        state.rhe[0][state.turn]++;
       }
 
       if (_bases[1]) {
         state.careers[state.entrance][state.turn]++;
+        state.rhe[0][state.turn]++;
+
         _bases[1] = null;
       }
 
@@ -95,20 +111,27 @@ export const gameSlice = createSlice({
       console.log(state.bases);
     },
     triple: (state, action) => {
+      state.rhe[1][state.turn]++;
+
       let _bases = [...state.bases];
 
       if (_bases[2]) {
         _bases[2] = null;
         state.careers[state.entrance][state.turn]++;
+        state.rhe[0][state.turn]++;
       }
 
       if (_bases[1]) {
         state.careers[state.entrance][state.turn]++;
+        state.rhe[0][state.turn]++;
+
         _bases[1] = null;
       }
 
       if (_bases[0]) {
         state.careers[state.entrance][state.turn]++;
+        state.rhe[0][state.turn]++;
+
         _bases[0] = null;
       }
 
@@ -150,6 +173,7 @@ export const gameSlice = createSlice({
       if (_bases[2]) {
         _bases[2] = null;
         state.careers[state.entrance][state.turn]++;
+        state.rhe[0][state.turn]++;
       }
 
       if (_bases[1]) {
@@ -176,11 +200,12 @@ export const gameSlice = createSlice({
         action.payload.turn == "visitors" ? state.entrance + 1 : state.entrance;
     },
     ball: (state) => {
+      if (!state.inited) return;
       state.balls++;
     },
     strike: (state) => {
       if (!state.inited) return;
-
+      state.rhe[2][state.turn]++;
       state.strikes++;
     },
     eliminatePlayer: (state, action) => {
