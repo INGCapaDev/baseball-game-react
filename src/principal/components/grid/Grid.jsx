@@ -1,15 +1,17 @@
 import { useId } from "react";
 import GridItems from "./components/GridItems";
+import { useSelector } from "react-redux";
 
 const Grid = (props) => {
   const id = useId();
   const values = props.values;
   const rhe = props.rhe;
+  const entrance = useSelector((state) => state.game.entrance);
 
   const items = values.map((value, index) => (
     <GridItems
       key={`${id}-v-${index}`}
-      value={value}
+      value={index <= entrance ? value : ""}
       colors="bg-black text-white"
     ></GridItems>
   ));
