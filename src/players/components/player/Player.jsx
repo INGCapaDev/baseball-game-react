@@ -20,6 +20,9 @@ const Player = ({ index, handleNamePlayer, position, name, ptc }) => {
         <Entry score="1-3" game="sencillo"></Entry>
         <Entry score="2-4" game="sencillo"></Entry>
         <Entry score="3-5" game="doble"></Entry>
+        <Entry score="3-5" game="doble"></Entry>
+        <Entry score="3-5" game="doble"></Entry>
+        <Entry score="3-5" game="doble"></Entry>
       </div>
       <div className="flex items-center justify-center bg-stone-800">
         <div className="text-center bg-transparent border-none pl-2 font-chalk text-[5vh]  uppercase text-white outline-none">

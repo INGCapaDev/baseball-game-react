@@ -23,10 +23,16 @@
 
 .players-grid {
   grid-template-columns: repeat(12, minmax(30px, 1fr));
-  grid-template-rows: repeat(9, minmax(30px, 1fr));
-  grid-auto-rows: minmax(30px, 1fr);
+  grid-template-rows: repeat(10, minmax(30px, 1fr));
 }
 
 .scores-grid {
-  grid-template-columns: repeat(5, minmax(30px, 1fr));
+  grid-template-columns: repeat(auto, minmax(30px, 1fr));
+  grid-auto-flow: column;
+  grid-auto-columns: 8.1vw;
+  overflow-x: scroll;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }

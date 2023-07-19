@@ -41,7 +41,7 @@ const TopBar = (props) => {
             }
           }}
         >
-          <img src="img/rounded-x.svg" alt="" className="h-[90%]" />
+          <img src="img/rounded-x.svg" alt="" className="h-[80%]" />
         </button>
       </div>
       <div className="col-span-1 flex items-center justify-center">

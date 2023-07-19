@@ -5,6 +5,7 @@ const SLICE_NAME = "game";
 
 const initialState = {
   inited: false,
+  finished: false,
   turn: "visitors",
   careers: new Array(9).fill(1).map(() => ({
     visitors: 0,
@@ -198,6 +199,9 @@ export const gameSlice = createSlice({
       state.turn = action.payload.turn;
       state.entrance =
         action.payload.turn == "visitors" ? state.entrance + 1 : state.entrance;
+      if (state.entrance == 9) {
+        state.finished = true;
+      }
     },
     ball: (state) => {
       if (!state.inited) return;
