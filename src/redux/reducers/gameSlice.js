@@ -17,6 +17,7 @@ const initialState = {
   strikes: 0,
   // 1ra, 2da, 3ra
   bases: [null, null, null],
+  lastPlay: null,
 };
 
 export const gameSlice = createSlice({
@@ -53,6 +54,7 @@ export const gameSlice = createSlice({
       state.bases = [null, null, null];
       state.balls = 0;
       state.strikes = 0;
+      state.lastPlay = "Homerun";
     },
     simple: (state, action) => {
       state.rhe[1][state.turn]++;
@@ -80,6 +82,7 @@ export const gameSlice = createSlice({
       state.bases = _bases;
       state.balls = 0;
       state.strikes = 0;
+      state.lastPlay = "Simple";
     },
     double: (state, action) => {
       state.rhe[1][state.turn]++;
@@ -110,6 +113,7 @@ export const gameSlice = createSlice({
       state.balls = 0;
       state.strikes = 0;
       console.log(state.bases);
+      state.lastPlay = "Doble";
     },
     triple: (state, action) => {
       state.rhe[1][state.turn]++;
@@ -141,6 +145,7 @@ export const gameSlice = createSlice({
       state.bases = _bases;
       state.balls = 0;
       state.strikes = 0;
+      state.lastPlay = "Triple";
     },
     deleteAll: (state) => {
       switch (state.outs) {
@@ -167,6 +172,7 @@ export const gameSlice = createSlice({
       state.outs = state.outs + 1;
       state.strikes = 0;
       state.balls = 0;
+      state.lastPlay = "Out";
     },
     basePerBall: (state, action) => {
       let _bases = [...state.bases];
@@ -192,6 +198,7 @@ export const gameSlice = createSlice({
       state.bases = _bases;
       state.balls = 0;
       state.strikes = 0;
+      state.lastPlay = "Base";
     },
     changeTurn: (state, action) => {
       (state.outs = 0), (state.strikes = 0);
@@ -200,6 +207,14 @@ export const gameSlice = createSlice({
       state.entrance =
         action.payload.turn == "visitors" ? state.entrance + 1 : state.entrance;
       if (state.entrance == 9) {
+        if (state.rhe[0]["visitors"] == state.rhe[0]["locals"]) {
+          state.careers[7]["locals"] += state.careers[8]["locals"];
+          state.careers[7]["visitors"] += state.careers[8]["visitors"];
+          state.careers[8]["locals"] = 0;
+          state.careers[8]["visitors"] = 0;
+          state.entrance--;
+          return;
+        }
         state.finished = true;
       }
     },

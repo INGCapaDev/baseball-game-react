@@ -42,6 +42,7 @@ const Players = ({ teamname, closeView, team }) => {
             key={players[index]?.id}
             index={index}
             name={player?.name}
+            entries={player?.entries}
             position={index % 2 === 0 ? "d" : "z"}
             ptc=".500"
             handleNamePlayer={handleNamePlayer}

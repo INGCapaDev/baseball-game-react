@@ -17,7 +17,6 @@ const Winner = () => {
   );
   const locals = careers.reduce((total, careers) => total + careers.locals, 0);
   const winner = () => {
-    if (visitors == locals) return "Empate";
     if (visitors > locals) return visitorsName;
     return localsName;
   };
@@ -29,7 +28,7 @@ const Winner = () => {
       <Confetti width={windowSize.width} height={windowSize.height} />
       <div className="h-screen w-full flex items-center justify-center bg-stone-800 flex-col space-y-8">
         <div className="flex flex-col items-center justify-center">
-          <p className="text-white font-chalk text-[6vw]">Ganador</p>
+          <p className="text-white font-chalk text-[6vw]">Felicidades</p>
           <p className="text-yellow-300 font-chalk text-[8vw]">{winner()}</p>
           <p className="text-white font-chalk text-[6vw]">{`${visitors} - ${locals}`}</p>
         </div>
@@ -43,7 +42,7 @@ const Winner = () => {
               }, 200);
             }}
           >
-            Seguir Jugando
+            Juego Nuevo
           </button>
         </div>
       </div>

@@ -15,6 +15,7 @@ import useCheckStrikes from "../hooks/useCheckStrikes";
 import Bases from "./components/bases/Bases";
 import useCheckBalls from "../hooks/useCheckBalls";
 import GridEntraces from "./components/grid/GridEntraces";
+import { useEntry } from "../hooks/useEntry";
 
 const values = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const rhe = ["r", "h", "e"];
@@ -48,6 +49,7 @@ function Game({ handlePlayersView }) {
   useCheckOuts();
   useCheckStrikes();
   useCheckBalls();
+  useEntry();
 
   return (
     <>
@@ -78,7 +80,7 @@ function Game({ handlePlayersView }) {
         <Team
           name={visitors.team_name}
           onClick={() => handlePlayersView(visitors.team_name, "visitors")}
-          disabled={initedGame}
+          disabled={false}
           bgColor={
             turn === "visitors" && initedGame ? "bg-orange-500" : "bg-black"
           }
@@ -97,7 +99,7 @@ function Game({ handlePlayersView }) {
         <Team
           name={locals.team_name}
           onClick={() => handlePlayersView(locals.team_name, "locals")}
-          disabled={initedGame}
+          disabled={false}
           bgColor={
             turn === "locals" && initedGame ? "bg-orange-500" : "bg-black"
           }
