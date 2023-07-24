@@ -28,6 +28,21 @@ const Players = ({ teamname, closeView, team }) => {
     setPitchers(newPitchers);
   };
 
+  const calculatePtc = (hits, index, team, times) => {
+    if (times == 0 || hits[index][team] == 0) {
+      return 0;
+    }
+    const ptc = hits[index][team] / times;
+
+    if (ptc == 1) {
+      return 1;
+    }
+
+    return `.${ptc.toFixed(2).substring(2)}`;
+  };
+
+  const hits = useSelector((state) => state.game.hits);
+
   return (
     <div className="players-grid grid-fullscreen m-1 grid gap-1">
       <TopBar
@@ -46,7 +61,7 @@ const Players = ({ teamname, closeView, team }) => {
             name={player?.name}
             entries={player?.entries}
             position={index % 2 === 0 ? "d" : "z"}
-            ptc=".500"
+            ptc={hits ? calculatePtc(hits, index, team, player.times) : 0}
             handleNamePlayer={handleNamePlayer}
             isDisable={initedGame}
           />

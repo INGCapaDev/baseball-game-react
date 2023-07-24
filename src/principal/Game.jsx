@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Balls from "./components/balls/Balls";
-import Button from "./components/button/Button";
+// import Button from "./components/button/Button";
 import Grid from "./components/grid/Grid";
 import Modal from "./components/modal/Modal";
 import Out from "./components/outs/Out";
@@ -61,17 +61,25 @@ function Game({ handlePlayersView }) {
             alt="logo"
           />
         </div>
-        <Out text="Out" />
 
-        <Button img="settings.svg"></Button>
+        <div className="col-span-8 grid grid-cols-8">
+          <Out text="Out" />
+          <div className="col-span-2 bg-black"></div>
+        </div>
+
+        {/* <Button img="settings.svg"></Button> */}
 
         <Play
           text={initedGame ? "JUGADA" : "JUGAR"}
           onClick={pressPlayButton}
         />
 
-        <Strike text="strikes" />
-        <Button img="back.svg"></Button>
+        <div className="col-span-8 grid grid-cols-8">
+          <Strike text="strikes" />
+          <div className="col-span-2 bg-black"></div>
+        </div>
+
+        {/* <Button img="back.svg"></Button> */}
         <Balls />
 
         {showJugadas ? <Modal onClose={closeAction} /> : null}
