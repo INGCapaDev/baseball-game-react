@@ -46,6 +46,7 @@ const Modal = ({ onClose }) => {
     makePlay(
       gameSlice.actions.homeRun({
         turn,
+        at_bat,
       })
     );
   };

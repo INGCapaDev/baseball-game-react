@@ -1,7 +1,15 @@
 import Entry from "./components/Entry";
 import { useRef } from "react";
 
-const Player = ({ index, handleNamePlayer, position, name, ptc, entries }) => {
+const Player = ({
+  index,
+  handleNamePlayer,
+  position,
+  name,
+  ptc,
+  entries,
+  isDisable,
+}) => {
   const scrollContainerRef = useRef(null);
 
   const handleEntryScroll = (e) => {
@@ -24,6 +32,7 @@ const Player = ({ index, handleNamePlayer, position, name, ptc, entries }) => {
           {position}
         </span>
         <input
+          disabled={isDisable}
           type="text"
           className="pl-2 font-chalk text-[5vh] uppercase text-white bg-transparent border-none outline-none w-full h-full"
           value={name}

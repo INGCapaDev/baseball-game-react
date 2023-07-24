@@ -34,10 +34,14 @@ export const gameSlice = createSlice({
         visitors: 0,
         locals: 0,
       }));
+      state.hits = new Array(9).fill(1).map(() => ({
+        visitors: 0,
+        locals: 0,
+      }));
     },
-    homeRun: (state) => {
+    homeRun: (state, action) => {
       state.rhe[1][state.turn]++;
-
+      state.hits[action.payload.at_bat.index][state.turn]++;
       // carrera de bateador
       state.careers[state.entrance][state.turn]++;
       state.rhe[0][state.turn]++;
@@ -58,6 +62,7 @@ export const gameSlice = createSlice({
     },
     simple: (state, action) => {
       state.rhe[1][state.turn]++;
+      state.hits[action.payload.at_bat.index][state.turn]++;
 
       let _bases = [...state.bases];
 
@@ -86,6 +91,7 @@ export const gameSlice = createSlice({
     },
     double: (state, action) => {
       state.rhe[1][state.turn]++;
+      state.hits[action.payload.at_bat.index][state.turn]++;
 
       let _bases = [...state.bases];
 
@@ -117,6 +123,7 @@ export const gameSlice = createSlice({
     },
     triple: (state, action) => {
       state.rhe[1][state.turn]++;
+      state.hits[action.payload.at_bat.index][state.turn]++;
 
       let _bases = [...state.bases];
 

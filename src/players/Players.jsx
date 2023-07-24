@@ -7,6 +7,7 @@ import { useState } from "react";
 const Players = ({ teamname, closeView, team }) => {
   const localPlayers = useSelector((state) => state.locals.batters);
   const visitorsPlayers = useSelector((state) => state.visitors.batters);
+  const initedGame = useSelector((state) => state.game.inited);
   const playersCurrent = team === "locals" ? localPlayers : visitorsPlayers;
   const [players, setPlayers] = useState(playersCurrent);
 
@@ -35,6 +36,7 @@ const Players = ({ teamname, closeView, team }) => {
         teamvalue={team}
         players={players}
         pitchers={pitchers}
+        isDisable={initedGame}
       />
       {players.map((player, index) => (
         <>
@@ -46,6 +48,7 @@ const Players = ({ teamname, closeView, team }) => {
             position={index % 2 === 0 ? "d" : "z"}
             ptc=".500"
             handleNamePlayer={handleNamePlayer}
+            isDisable={initedGame}
           />
           {index <= 4 ? (
             <Pitcher
@@ -53,7 +56,7 @@ const Players = ({ teamname, closeView, team }) => {
               index={index}
               name={pitchers[index]?.name}
               handleNamePitcher={handleNamePitcher}
-              isDisable={false}
+              isDisable={initedGame}
             />
           ) : (
             <Pitcher

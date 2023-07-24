@@ -19,7 +19,11 @@ const TopBar = (props) => {
           Team name:
         </span>
       </div>
-      <Team name={team} handleTeam={(value) => setTeam(value)}></Team>
+      <Team
+        isDisable={props?.isDisable}
+        name={team}
+        handleTeam={(value) => setTeam(value)}
+      ></Team>
       <div className="col-span-1 flex items-center justify-center overflow-hidden">
         <button
           className="overflow-hidden h-full rounded-full"
