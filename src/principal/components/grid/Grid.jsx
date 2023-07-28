@@ -8,14 +8,29 @@ const Grid = (props) => {
   const rhe = props.rhe;
   const entrance = useSelector((state) => state.game.entrance);
   const inited = useSelector((state) => state.game.inited);
+  const turn = useSelector((state) => state.game.turn);
 
-  const items = values.map((value, index) => (
-    <GridItems
-      key={`${id}-v-${index}`}
-      value={index <= entrance && inited ? value : ""}
-      colors="bg-black text-white"
-    ></GridItems>
-  ));
+  const items = values.map((value, index) =>
+    props?.isLocal ? (
+      <GridItems
+        key={`${id}-v-${index}`}
+        value={
+          index == entrance && inited && turn == "locals"
+            ? value
+            : index < entrance && inited
+            ? value
+            : ""
+        }
+        colors="bg-black text-white"
+      ></GridItems>
+    ) : (
+      <GridItems
+        key={`${id}-v-${index}`}
+        value={index <= entrance && inited ? value : ""}
+        colors="bg-black text-white"
+      ></GridItems>
+    )
+  );
   const itemsRHE = rhe.map((value, index) => (
     <GridItems key={`${id}-rhe-${index}`} value={value}></GridItems>
   ));

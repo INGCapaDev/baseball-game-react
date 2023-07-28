@@ -136,6 +136,7 @@ function Game({ handlePlayersView }) {
 
         {showJugadas ? null : (
           <Grid
+            isLocal={true}
             values={careers.map(({ locals }) => locals)}
             rhe={initedGame ? rheValues.map(({ locals }) => locals) : []}
           />
