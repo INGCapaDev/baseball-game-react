@@ -13,7 +13,8 @@ const Team = (props) => {
         className={classNames(
           "col-span-6 flex min-w-[auto] items-center transition-colors duration-200",
           props?.bgColor,
-          props?.textColor
+          props?.textColor,
+          props?.step
         )}
         onClick={() => {
           setTimeout(() => {

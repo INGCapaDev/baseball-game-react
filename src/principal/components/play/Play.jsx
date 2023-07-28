@@ -8,7 +8,7 @@ const Play = ({ text, onClick, disabled }) => {
   return (
     <button
       ref={playRef}
-      className="col-span-4 row-span-2 flex items-center justify-center bg-orange-500 transition-all duration-300 ease-in-out"
+      className="col-span-4 third-step row-span-2 flex items-center justify-center bg-orange-500 transition-all duration-300 ease-in-out"
       onClick={() => {
         setTimeout(() => {
           onClick();

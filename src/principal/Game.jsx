@@ -16,6 +16,8 @@ import Bases from "./components/bases/Bases";
 import useCheckBalls from "../hooks/useCheckBalls";
 import GridEntraces from "./components/grid/GridEntraces";
 import { useEntry } from "../hooks/useEntry";
+import { useTour } from "@reactour/tour";
+import { useEffect } from "react";
 
 const values = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const rhe = ["r", "h", "e"];
@@ -45,6 +47,12 @@ function Game({ handlePlayersView }) {
   const closeAction = () => {
     setShowJugadas(false);
   };
+
+  const { setIsOpen, setCurrentStep } = useTour();
+
+  useEffect(() => {
+    setIsOpen(!initedGame);
+  }, [initedGame, setIsOpen]);
 
   useCheckOuts();
   useCheckStrikes();
@@ -87,8 +95,13 @@ function Game({ handlePlayersView }) {
 
         <Team
           name={visitors.team_name}
-          onClick={() => handlePlayersView(visitors.team_name, "visitors")}
+          onClick={() => {
+            setIsOpen(false);
+            setCurrentStep(1);
+            handlePlayersView(visitors.team_name, "visitors");
+          }}
           disabled={false}
+          step="first-step"
           bgColor={
             turn === "visitors" && initedGame ? "bg-orange-500" : "bg-black"
           }
@@ -106,8 +119,13 @@ function Game({ handlePlayersView }) {
 
         <Team
           name={locals.team_name}
-          onClick={() => handlePlayersView(locals.team_name, "locals")}
+          onClick={() => {
+            setIsOpen(false);
+            setCurrentStep(2);
+            handlePlayersView(locals.team_name, "locals");
+          }}
           disabled={false}
+          step="second-step"
           bgColor={
             turn === "locals" && initedGame ? "bg-orange-500" : "bg-black"
           }
