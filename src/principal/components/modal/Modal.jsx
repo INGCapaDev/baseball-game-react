@@ -79,6 +79,11 @@ const Modal = ({ onClose }) => {
     );
   };
 
+  const error = () => {
+    playSound("hit");
+    makePlay(gameSlice.actions.error({ turn }));
+  };
+
   const eliminatePlayer = (base) => {
     playSound("hit");
     makePlay(
@@ -104,15 +109,16 @@ const Modal = ({ onClose }) => {
       >
         <img className="h-6 w-6" src="./img/close.svg" alt="" />
       </button>
-      <div className="ml-5 flex flex-col">
+      <div className="ml-5 flex flex-col h-full justify-evenly">
         <MenuItem text="sencillo" onClick={simple}></MenuItem>
         <MenuItem text="doble" onClick={double}></MenuItem>
         <MenuItem text="triple" onClick={triple}></MenuItem>
         <MenuItem text="home run" onClick={homerun}></MenuItem>
       </div>
-      <div className="ml-5 flex flex-col">
+      <div className="ml-5 flex flex-col h-full justify-evenly">
+        <MenuItem text="error" onClick={error}></MenuItem>
         <MenuItem text="out" onClick={out}></MenuItem>
-        <MenuItem text="base por bola" onClick={base}></MenuItem>
+        <MenuItem text="bolazo al bateador" onClick={base}></MenuItem>
         <MenuItemBase
           options={["1ra", "2da", "3ra"]}
           text="corredor eliminado"

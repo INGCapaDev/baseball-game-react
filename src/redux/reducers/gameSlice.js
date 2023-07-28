@@ -231,8 +231,12 @@ export const gameSlice = createSlice({
     },
     strike: (state) => {
       if (!state.inited) return;
-      state.rhe[2][state.turn]++;
+
       state.strikes++;
+    },
+    error: (state) => {
+      if (!state.inited) return;
+      state.rhe[2][state.turn]++;
     },
     eliminatePlayer: (state, action) => {
       if (!state.inited) return;
