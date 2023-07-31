@@ -10,8 +10,7 @@ const Balls = () => {
   const at_bat = useSelector((state) => state[turn]?.at_bat);
   const outs = useSelector((state) => state.game.outs);
   const balls = useSelector((state) => state.game.balls);
-
-  console.log({ balls });
+  const hits = useSelector((state) => state.game.hits);
 
   const dispatch = useDispatch();
 
@@ -26,8 +25,21 @@ const Balls = () => {
     }
   };
 
+  const calculatePtc = (hits, index, team, times) => {
+    if (times == 0 || hits[index][team] == 0) {
+      return 0;
+    }
+    const ptc = hits[index][team] / times;
+
+    if (ptc == 1) {
+      return 1;
+    }
+
+    return `.${ptc.toFixed(3).substring(2)}`;
+  };
+
   return (
-    <div className="col-span-12 grid grid-cols-12 bg-black">
+    <div className="col-span-12  grid grid-cols-12  bg-black">
       <div className="col-span-3 flex justify-between bg-black">
         <div className="flex min-w-[auto] items-center bg-black">
           <span className="pl-1 text-[6vh] font-bold uppercase text-white">
@@ -53,13 +65,46 @@ const Balls = () => {
           bgColor={balls > 3 ? "bg-yellow-500" : "bg-white"}
         />
       </div>
-      <div className="col-span-5 flex flex-col bg-black">
-        <span className="pl-1 text-[3vh] font-bold uppercase text-white">
-          AL BAT
-        </span>
-        <span className="pl-4 text-[4vh] uppercase text-white">
-          {at_bat?.batter?.name}
-        </span>
+      <div className="col-span-5 overflow-hidden bg-black">
+        <div className="h-full w-full overflow-hidden">
+          <div
+            className="w-full overflow-x-scroll whitespace-nowrap pl-1 text-[3vh] font-bold uppercase text-white"
+            style={{
+              WebkitOverflowScrolling: "touch",
+            }}
+          >
+            AL BAT
+            {hits ? (
+              <>
+                <span>
+                  {" / "}
+                  {hits[at_bat?.index][turn]} - {at_bat?.batter?.times}
+                </span>
+                <span>
+                  {" / "}
+                  {hits
+                    ? calculatePtc(
+                        hits,
+                        at_bat?.index,
+                        turn,
+                        at_bat?.batter?.times
+                      )
+                    : 0}
+                </span>
+              </>
+            ) : (
+              ""
+            )}
+          </div>
+          <div
+            className="w-full overflow-x-scroll whitespace-nowrap pl-4 text-[4vh] uppercase text-white"
+            style={{
+              WebkitOverflowScrolling: "touch",
+            }}
+          >
+            {at_bat?.batter?.name}
+          </div>
+        </div>
       </div>
     </div>
   );
