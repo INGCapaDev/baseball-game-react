@@ -65,7 +65,7 @@ function Game({ handlePlayersView }) {
   return (
     <>
       <div className="container-grid grid-fullscreen m-1 grid gap-1">
-        <div className="col-span-6 row-span-4 bg-orange-300">
+        <div className="col-span-6 row-span-4 bg-secondary">
           <img
             src="/img/logo_app_bs.png"
             className="h-full w-full object-contain"
@@ -74,8 +74,8 @@ function Game({ handlePlayersView }) {
         </div>
 
         <div className="col-span-8 grid grid-cols-8">
-          <Out text="Out" />
-          <div className="col-span-2 bg-black"></div>
+          <Out text="Outs" />
+          <div className="col-span-2 bg-primary"></div>
         </div>
 
         {/* <Button img="settings.svg"></Button> */}
@@ -87,7 +87,7 @@ function Game({ handlePlayersView }) {
 
         <div className="col-span-8 grid grid-cols-8">
           <Strike text="strikes" />
-          <div className="col-span-2 bg-black"></div>
+          <div className="col-span-2 bg-primary"></div>
         </div>
 
         {/* <Button img="back.svg"></Button> */}
@@ -98,6 +98,7 @@ function Game({ handlePlayersView }) {
             <Modal onClose={closeAction} />
           </ShowModal>
         ) : null}
+
         <GridEntraces values={values} rhe={rhe} />
 
         <Team
@@ -110,10 +111,12 @@ function Game({ handlePlayersView }) {
           disabled={false}
           step="first-step"
           bgColor={
-            turn === "visitors" && initedGame ? "bg-orange-500" : "bg-black"
+            turn === "visitors" && initedGame ? "bg-tertiary" : "bg-primary"
           }
           textColor={
-            turn === "visitors" && initedGame ? "text-black" : "text-white"
+            turn === "visitors" && initedGame
+              ? "text-tertiary-text"
+              : "text-primary-text"
           }
         />
 
@@ -132,10 +135,12 @@ function Game({ handlePlayersView }) {
           disabled={false}
           step="second-step"
           bgColor={
-            turn === "locals" && initedGame ? "bg-orange-500" : "bg-black"
+            turn === "locals" && initedGame ? "bg-tertiary" : "bg-primary"
           }
           textColor={
-            turn === "locals" && initedGame ? "text-black" : "text-white"
+            turn === "locals" && initedGame
+              ? "text-tertiary-text"
+              : "text-primary-text"
           }
         />
 
@@ -146,7 +151,7 @@ function Game({ handlePlayersView }) {
         />
 
         <Bases />
-        <div className="col-span-12 row-span-3 bg-orange-500"></div>
+        <div className="col-span-12 row-span-3 bg-primary"></div>
       </div>
     </>
   );

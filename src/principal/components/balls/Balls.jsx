@@ -39,36 +39,36 @@ const Balls = () => {
   };
 
   return (
-    <div className="col-span-12  grid grid-cols-12  bg-black">
-      <div className="col-span-3 flex justify-between bg-black">
-        <div className="flex min-w-[auto] items-center bg-black">
-          <span className="pl-1 text-[6vh] font-bold uppercase text-white">
+    <div className="col-span-12  grid grid-cols-12  bg-primary">
+      <div className="col-span-3 flex justify-between bg-primary">
+        <div className="flex min-w-[auto] items-center bg-primary">
+          <span className="pl-1 text-[6vh] font-bold uppercase text-primary-text">
             BOLAS
           </span>
         </div>
       </div>
-      <div className="col-span-4 grid grid-cols-4 gap-1 bg-black">
+      <div className="col-span-4 grid grid-cols-4 gap-1 bg-primary">
         <Field
           onClick={markBall(0)}
-          bgColor={balls > 0 ? "bg-yellow-500" : "bg-white"}
+          bgColor={balls > 0 ? "bg-tertiary" : "bg-white"}
         />
         <Field
           onClick={markBall(1)}
-          bgColor={balls > 1 ? "bg-yellow-500" : "bg-white"}
+          bgColor={balls > 1 ? "bg-tertiary" : "bg-white"}
         />
         <Field
           onClick={markBall(2)}
-          bgColor={balls > 2 ? "bg-yellow-500" : "bg-white"}
+          bgColor={balls > 2 ? "bg-tertiary" : "bg-white"}
         />
         <Field
           onClick={markBall(3)}
-          bgColor={balls > 3 ? "bg-yellow-500" : "bg-white"}
+          bgColor={balls > 3 ? "bg-tertiary" : "bg-white"}
         />
       </div>
-      <div className="col-span-5 overflow-hidden bg-black">
+      <div className="col-span-5 overflow-hidden bg-primary">
         <div className="h-full w-full overflow-hidden">
           <div
-            className="w-full overflow-x-scroll whitespace-nowrap pl-1 text-[3vh] font-bold uppercase text-white"
+            className="w-full overflow-x-scroll whitespace-nowrap pl-1 text-[3vh] font-bold uppercase text-primary-text"
             style={{
               WebkitOverflowScrolling: "touch",
             }}
@@ -97,7 +97,7 @@ const Balls = () => {
             )}
           </div>
           <div
-            className="w-full overflow-x-scroll whitespace-nowrap pl-4 text-[4vh] uppercase text-white"
+            className="w-full overflow-x-scroll whitespace-nowrap pl-4 text-[4vh] uppercase text-primary-text"
             style={{
               WebkitOverflowScrolling: "touch",
             }}

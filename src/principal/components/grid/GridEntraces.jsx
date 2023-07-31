@@ -15,8 +15,8 @@ const GridEntraces = (props) => {
       value={value}
       colors={
         `${id}-v-${index}` === `${id}-v-${entrance}` && inited
-          ? "bg-orange-500 text-black"
-          : "bg-black text-white"
+          ? "bg-tertiary text-tertiary-text"
+          : "bg-secondary text-secondary-text"
       }
     ></GridItems>
   ));
@@ -27,7 +27,7 @@ const GridEntraces = (props) => {
   return (
     <div className="grid-squares col-span-12 grid gap-1">
       {items}
-      <div className="col-span-3 grid grid-cols-3 bg-black text-white">
+      <div className="col-span-3 grid grid-cols-3 bg-secondary text-secondary-text">
         {itemsRHE}
       </div>
     </div>

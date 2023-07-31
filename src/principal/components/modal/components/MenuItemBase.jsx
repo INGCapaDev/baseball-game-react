@@ -1,14 +1,14 @@
 import { useState } from "react";
 
 const MenuItemBase = ({ text, options, onClick }) => {
-  const [spanColor, setSpanColor] = useState("text-white");
+  const [spanColor, setSpanColor] = useState("text-secondary-text");
 
   const handleOptionHover = () => {
-    setSpanColor("text-orange-300 transition-colors duration-200");
+    setSpanColor("text-tertiary transition-colors duration-200");
   };
 
   const handleOptionLeave = () => {
-    setSpanColor("text-white transition-colors duration-200");
+    setSpanColor("text-secondary-text transition-colors duration-200");
   };
 
   return (
@@ -29,7 +29,7 @@ const MenuItemBase = ({ text, options, onClick }) => {
           <button
             key={index}
             onClick={() => onClick(index)}
-            className="text-[5vh] font-bold leading-[1.125] text-white hover:text-orange-300 transition-colors duration-200"
+            className="text-[5vh] font-bold leading-[1.125] text-secondary-text transition-colors duration-200 hover:text-tertiary"
             onMouseEnter={handleOptionHover}
             onMouseLeave={handleOptionLeave}
           >

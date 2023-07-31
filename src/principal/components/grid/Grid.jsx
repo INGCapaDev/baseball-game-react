@@ -21,13 +21,13 @@ const Grid = (props) => {
             ? value
             : ""
         }
-        colors="bg-black text-white"
+        colors="bg-secondary text-secondary-text"
       ></GridItems>
     ) : (
       <GridItems
         key={`${id}-v-${index}`}
         value={index <= entrance && inited ? value : ""}
-        colors="bg-black text-white"
+        colors="bg-secondary text-secondary-text"
       ></GridItems>
     )
   );
@@ -38,7 +38,7 @@ const Grid = (props) => {
   return (
     <div className="grid-squares col-span-12 grid gap-1">
       {items}
-      <div className="col-span-3 grid grid-cols-3 bg-black text-white">
+      <div className="col-span-3 grid grid-cols-3 bg-secondary text-secondary-text">
         {itemsRHE}
       </div>
     </div>

@@ -7,23 +7,26 @@ export default {
         chalk: ["Chalkduster"],
       },
       boxShadow: {
-        modal: "inset 0 0 8px 2px rgba(214,148,17,1);",
+        modal: "inset 0 0 8px 2px #f7b500", //! shadow color = tertiary color
       },
       colors: {
         primary: {
           DEFAULT: "#ab1217",
           dark: "#ab1217",
           light: "#ab1217",
+          text: "#ffffff",
         },
         secondary: {
           DEFAULT: "#000000",
           dark: "#000000",
           light: "#000000",
+          text: "#ffffff",
         },
         tertiary: {
           DEFAULT: "#f7b500",
           dark: "#f7b500",
           light: "#f7b500",
+          text: "#000000",
         },
       },
     },

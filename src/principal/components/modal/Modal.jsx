@@ -112,8 +112,8 @@ const Modal = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed left-0 top-0 z-10 flex h-full w-full items-center justify-center bg-black bg-opacity-50">
-      <div className="relative flex items-center bg-black p-2 shadow-modal">
+    <div className="fixed left-0 top-0 z-10 flex h-full w-full items-center justify-center bg-secondary bg-opacity-50">
+      <div className="relative flex items-center bg-secondary p-2 shadow-modal">
         <button
           className="absolute right-1 top-1 hover:animate-pulse hover:cursor-pointer"
           onClick={onClose}
