@@ -38,7 +38,7 @@ const Players = ({ teamname, closeView, team }) => {
       return 1;
     }
 
-    return `.${ptc.toFixed(2).substring(2)}`;
+    return `.${ptc.toFixed(3).substring(2)}`;
   };
 
   const hits = useSelector((state) => state.game.hits);
