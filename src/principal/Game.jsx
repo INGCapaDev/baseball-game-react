@@ -19,6 +19,7 @@ import { useEntry } from "../hooks/useEntry";
 import { useTour } from "@reactour/tour";
 import { useEffect } from "react";
 import useCheckDraw from "../hooks/useCheckDraw";
+import ShowModal from "../ShowModal";
 
 const values = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const rhe = ["c", "h", "e"];
@@ -92,8 +93,12 @@ function Game({ handlePlayersView }) {
         {/* <Button img="back.svg"></Button> */}
         <Balls />
 
-        {showJugadas ? <Modal onClose={closeAction} /> : null}
-        {showJugadas ? null : <GridEntraces values={values} rhe={rhe} />}
+        {showJugadas ? (
+          <ShowModal>
+            <Modal onClose={closeAction} />
+          </ShowModal>
+        ) : null}
+        <GridEntraces values={values} rhe={rhe} />
 
         <Team
           name={visitors.team_name}
@@ -112,12 +117,10 @@ function Game({ handlePlayersView }) {
           }
         />
 
-        {showJugadas ? null : (
-          <Grid
-            values={careers.map(({ visitors }) => visitors)}
-            rhe={initedGame ? rheValues.map(({ visitors }) => visitors) : []}
-          />
-        )}
+        <Grid
+          values={careers.map(({ visitors }) => visitors)}
+          rhe={initedGame ? rheValues.map(({ visitors }) => visitors) : []}
+        />
 
         <Team
           name={locals.team_name}
@@ -136,13 +139,12 @@ function Game({ handlePlayersView }) {
           }
         />
 
-        {showJugadas ? null : (
-          <Grid
-            isLocal={true}
-            values={careers.map(({ locals }) => locals)}
-            rhe={initedGame ? rheValues.map(({ locals }) => locals) : []}
-          />
-        )}
+        <Grid
+          isLocal={true}
+          values={careers.map(({ locals }) => locals)}
+          rhe={initedGame ? rheValues.map(({ locals }) => locals) : []}
+        />
+
         <Bases />
         <div className="col-span-12 row-span-3 bg-orange-500"></div>
       </div>

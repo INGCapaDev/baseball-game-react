@@ -102,28 +102,35 @@ const Modal = ({ onClose }) => {
   };
 
   return (
-    <div className="relative col-span-12 row-span-3 flex items-center bg-black shadow-modal">
-      <button
-        className="absolute right-1 top-1 hover:animate-pulse hover:cursor-pointer"
-        onClick={onClose}
-      >
-        <img className="h-6 w-6" src="./img/close.svg" alt="" />
-      </button>
-      <div className="ml-5 flex flex-col h-full justify-evenly">
-        <MenuItem text="sencillo" onClick={simple}></MenuItem>
-        <MenuItem text="doble" onClick={double}></MenuItem>
-        <MenuItem text="triple" onClick={triple}></MenuItem>
-        <MenuItem text="home run" onClick={homerun}></MenuItem>
-      </div>
-      <div className="ml-5 flex flex-col h-full justify-evenly">
-        <MenuItem text="error" onClick={error}></MenuItem>
-        <MenuItem text="out" onClick={out}></MenuItem>
-        <MenuItem text="bolazo al bateador" onClick={base}></MenuItem>
-        <MenuItemBase
-          options={["1ra", "2da", "3ra"]}
-          text="corredor eliminado"
-          onClick={eliminatePlayer}
-        />
+    <div className="fixed left-0 top-0 z-10 flex h-full w-full items-center justify-center bg-black bg-opacity-50">
+      <div className="relative flex items-center bg-black p-2 shadow-modal">
+        <button
+          className="absolute right-1 top-1 hover:animate-pulse hover:cursor-pointer"
+          onClick={onClose}
+        >
+          <img className="h-6 w-6" src="./img/close.svg" alt="" />
+        </button>
+        <div className="items ml-5 flex h-full flex-col justify-evenly">
+          <MenuItem text="sencillo" onClick={simple}></MenuItem>
+          <MenuItem text="doble" onClick={double}></MenuItem>
+          <MenuItem text="triple" onClick={triple}></MenuItem>
+          <MenuItem text="home run" onClick={homerun}></MenuItem>
+          <MenuItemBase
+            options={["1ra", "2da", "3ra"]}
+            text="avanzar corredor"
+            onClick={null}
+          />
+        </div>
+        <div className="mx-5 flex h-full flex-col justify-evenly">
+          <MenuItem text="error" onClick={error}></MenuItem>
+          <MenuItem text="out" onClick={out}></MenuItem>
+          <MenuItem text="bolazo al bateador" onClick={base}></MenuItem>
+          <MenuItemBase
+            options={["1ra", "2da", "3ra"]}
+            text="corredor eliminado"
+            onClick={eliminatePlayer}
+          />
+        </div>
       </div>
     </div>
   );

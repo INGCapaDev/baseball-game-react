@@ -7,7 +7,7 @@ export default {
         chalk: ["Chalkduster"],
       },
       boxShadow: {
-        modal: "inset 0 0 8px 8px rgba(214,148,17,1);",
+        modal: "inset 0 0 8px 2px rgba(214,148,17,1);",
       },
     },
   },
