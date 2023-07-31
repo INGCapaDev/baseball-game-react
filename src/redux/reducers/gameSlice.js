@@ -190,20 +190,12 @@ export const gameSlice = createSlice({
             _bases[2] = null;
             state.careers[state.entrance][state.turn]++;
             state.rhe[0][state.turn]++;
-            _bases[2] = { ..._bases[1] };
-            _bases[1] = null;
-            _bases[1] = { ..._bases[0] };
-            _bases[0] = null;
-          } else {
-            _bases[2] = { ..._bases[1] };
-            _bases[1] = null;
-            _bases[1] = { ..._bases[0] };
-            _bases[0] = null;
           }
-        } else {
-          _bases[1] = { ..._bases[0] };
-          _bases[0] = null;
+          _bases[2] = { ..._bases[1] };
+          _bases[1] = null;
         }
+        _bases[1] = { ..._bases[0] };
+        _bases[0] = null;
       }
 
       _bases[0] = action.payload.at_bat;
