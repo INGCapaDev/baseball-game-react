@@ -87,7 +87,7 @@ export const gameSlice = createSlice({
       state.bases = _bases;
       state.balls = 0;
       state.strikes = 0;
-      state.lastPlay = "Simple";
+      state.lastPlay = "Sencillo";
     },
     double: (state, action) => {
       state.rhe[1][state.turn]++;
