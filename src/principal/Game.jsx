@@ -18,6 +18,7 @@ import GridEntraces from "./components/grid/GridEntraces";
 import { useEntry } from "../hooks/useEntry";
 import { useTour } from "@reactour/tour";
 import { useEffect } from "react";
+import useCheckDraw from "../hooks/useCheckDraw";
 
 const values = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const rhe = ["r", "h", "e"];
@@ -58,6 +59,7 @@ function Game({ handlePlayersView }) {
   useCheckStrikes();
   useCheckBalls();
   useEntry();
+  useCheckDraw();
 
   return (
     <>
@@ -65,7 +67,7 @@ function Game({ handlePlayersView }) {
         <div className="col-span-6 row-span-4 bg-orange-300">
           <img
             src="/img/logo_app_bs.png"
-            className="w-full h-full object-contain"
+            className="h-full w-full object-contain"
             alt="logo"
           />
         </div>
