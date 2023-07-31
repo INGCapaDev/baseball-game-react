@@ -271,5 +271,48 @@ export const gameSlice = createSlice({
 
       state.bases = _bases;
     },
+    movePlayer: (state, action) => {
+      if (!state.inited) return;
+      const { bases, turn, rhe, entrance, careers } = state;
+      const _bases = [...bases];
+      const baseIndex = action.payload.base;
+
+      if (!_bases[baseIndex]) return;
+
+      if (turn === "locals") {
+        rhe[2]["visitors"]++;
+      } else {
+        rhe[2]["locals"]++;
+      }
+
+      if (baseIndex === 0) {
+        if (_bases[1]) {
+          if (_bases[2]) {
+            careers[entrance][turn]++;
+            rhe[0][turn]++;
+          }
+          _bases[2] = _bases[1];
+        }
+        _bases[1] = _bases[0];
+        _bases[0] = null;
+      }
+
+      if (baseIndex === 1) {
+        if (_bases[2]) {
+          careers[entrance][turn]++;
+          rhe[0][turn]++;
+        }
+        _bases[2] = _bases[1];
+        _bases[1] = null;
+      }
+
+      if (baseIndex === 2) {
+        careers[entrance][turn]++;
+        rhe[0][turn]++;
+        _bases[2] = null;
+      }
+
+      state.bases = _bases;
+    },
   },
 });

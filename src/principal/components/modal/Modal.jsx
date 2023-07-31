@@ -94,6 +94,16 @@ const Modal = ({ onClose }) => {
     );
   };
 
+  const movePlayer = (base) => {
+    playSound("hit");
+    makePlay(
+      gameSlice.actions.movePlayer({
+        turn,
+        base,
+      })
+    );
+  };
+
   const makePlay = (play) => {
     resetHitAudio();
     dispatch(play);
@@ -118,7 +128,7 @@ const Modal = ({ onClose }) => {
           <MenuItemBase
             options={["1ra", "2da", "3ra"]}
             text="avanzar corredor"
-            onClick={null}
+            onClick={movePlayer}
           />
         </div>
         <div className="mx-5 flex h-full flex-col justify-evenly">
