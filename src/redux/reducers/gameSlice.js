@@ -184,20 +184,26 @@ export const gameSlice = createSlice({
     basePerBall: (state, action) => {
       let _bases = [...state.bases];
 
-      if (_bases[2]) {
-        _bases[2] = null;
-        state.careers[state.entrance][state.turn]++;
-        state.rhe[0][state.turn]++;
-      }
-
-      if (_bases[1]) {
-        _bases[2] = { ..._bases[1] };
-        _bases[1] = null;
-      }
-
       if (_bases[0]) {
-        _bases[1] = { ..._bases[0] };
-        _bases[0] = null;
+        if (_bases[1]) {
+          if (_bases[2]) {
+            _bases[2] = null;
+            state.careers[state.entrance][state.turn]++;
+            state.rhe[0][state.turn]++;
+            _bases[2] = { ..._bases[1] };
+            _bases[1] = null;
+            _bases[1] = { ..._bases[0] };
+            _bases[0] = null;
+          } else {
+            _bases[2] = { ..._bases[1] };
+            _bases[1] = null;
+            _bases[1] = { ..._bases[0] };
+            _bases[0] = null;
+          }
+        } else {
+          _bases[1] = { ..._bases[0] };
+          _bases[0] = null;
+        }
       }
 
       _bases[0] = action.payload.at_bat;
