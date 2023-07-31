@@ -249,15 +249,24 @@ export const gameSlice = createSlice({
       let _bases = [...state.bases];
 
       if (action.payload.base == 0) {
-        _bases[0] = null;
+        if (_bases[0]) {
+          state.outs++;
+          _bases[0] = null;
+        }
       }
 
       if (action.payload.base == 1) {
-        _bases[1] = null;
+        if (_bases[1]) {
+          state.outs++;
+          _bases[1] = null;
+        }
       }
 
       if (action.payload.base == 2) {
-        _bases[2] = null;
+        if (_bases[2]) {
+          state.outs++;
+          _bases[2] = null;
+        }
       }
 
       state.bases = _bases;
