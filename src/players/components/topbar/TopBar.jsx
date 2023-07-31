@@ -51,9 +51,9 @@ const TopBar = (props) => {
       <div className="col-span-1 flex items-center justify-center">
         <Heading text="ptc"></Heading>
       </div>
-      <div className="col-span-3 flex items-center justify-center">
+      {/* <div className="col-span-3 flex items-center justify-center">
         <Heading text="pitchers"></Heading>
-      </div>
+      </div> */}
     </div>
   );
 };

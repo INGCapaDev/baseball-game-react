@@ -42,7 +42,7 @@ const Player = ({
       <div
         ref={scrollContainerRef}
         onScroll={handleEntryScroll}
-        className="scores-grid col-span-5 grid gap-1 bg-white entry-scroll-container"
+        className="scores-grid col-span-8 grid gap-1 bg-white entry-scroll-container"
         style={{
           WebkitOverflowScrolling: "touch",
         }}

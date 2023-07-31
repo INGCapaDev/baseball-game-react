@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import Pitcher from "./components/pitcher/Pitcher";
+// import Pitcher from "./components/pitcher/Pitcher";
 import Player from "./components/player/Player";
 import TopBar from "./components/topbar/TopBar";
 import { useState } from "react";
@@ -11,10 +11,10 @@ const Players = ({ teamname, closeView, team }) => {
   const playersCurrent = team === "locals" ? localPlayers : visitorsPlayers;
   const [players, setPlayers] = useState(playersCurrent);
 
-  const localPitchers = useSelector((state) => state.locals.pitchers);
-  const visitorsPitchers = useSelector((state) => state.visitors.pitchers);
-  const pitchersCurrent = team === "locals" ? localPitchers : visitorsPitchers;
-  const [pitchers, setPitchers] = useState(pitchersCurrent);
+  // const localPitchers = useSelector((state) => state.locals.pitchers);
+  // const visitorsPitchers = useSelector((state) => state.visitors.pitchers);
+  // const pitchersCurrent = team === "locals" ? localPitchers : visitorsPitchers;
+  // const [pitchers, setPitchers] = useState(pitchersCurrent);
 
   const handleNamePlayer = (name, index) => {
     let newPlayers = [...players];
@@ -22,11 +22,11 @@ const Players = ({ teamname, closeView, team }) => {
     setPlayers(newPlayers);
   };
 
-  const handleNamePitcher = (name, index) => {
-    let newPitchers = [...pitchers];
-    newPitchers[index] = { ...newPitchers[index], name: name };
-    setPitchers(newPitchers);
-  };
+  // const handleNamePitcher = (name, index) => {
+  //   let newPitchers = [...pitchers];
+  //   newPitchers[index] = { ...newPitchers[index], name: name };
+  //   setPitchers(newPitchers);
+  // };
 
   const calculatePtc = (hits, index, team, times) => {
     if (times == 0 || hits[index][team] == 0) {
@@ -50,7 +50,7 @@ const Players = ({ teamname, closeView, team }) => {
         closeView={closeView}
         teamvalue={team}
         players={players}
-        pitchers={pitchers}
+        // pitchers={pitchers}
         isDisable={initedGame}
       />
       {players.map((player, index) => (
@@ -65,7 +65,7 @@ const Players = ({ teamname, closeView, team }) => {
             handleNamePlayer={handleNamePlayer}
             isDisable={initedGame}
           />
-          {index <= 4 ? (
+          {/* {index <= 4 ? (
             <Pitcher
               key={pitchers[index]?.id}
               index={index}
@@ -80,7 +80,7 @@ const Players = ({ teamname, closeView, team }) => {
               name=""
               isDisable={true}
             />
-          )}
+          )} */}
         </>
       ))}
     </div>

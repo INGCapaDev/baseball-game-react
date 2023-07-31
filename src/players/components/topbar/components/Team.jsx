@@ -1,6 +1,6 @@
 const TeamName = ({ name, handleTeam, isDisable }) => {
   return (
-    <div className="col-span-4 flex items-center">
+    <div className="col-span-7 flex items-center">
       <input
         type="text"
         disabled={isDisable}
