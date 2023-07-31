@@ -50,7 +50,7 @@ export const visitorsSlice = createSlice({
   name: SLICE_NAME,
   initialState: {
     batters: INIT_BATTERS,
-    team_name: "VISITOR",
+    team_name: "VISITANTES",
     at_bat: INIT_AT_BAT,
     last_batter: null,
     pitchers: INIT_PITCHERS,

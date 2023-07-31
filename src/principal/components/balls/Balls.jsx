@@ -31,7 +31,7 @@ const Balls = () => {
       <div className="col-span-3 flex justify-between bg-black">
         <div className="flex min-w-[auto] items-center bg-black">
           <span className="pl-1 text-[6vh] font-bold uppercase text-white">
-            Balls
+            BOLAS
           </span>
         </div>
       </div>
@@ -53,11 +53,11 @@ const Balls = () => {
           bgColor={balls > 3 ? "bg-yellow-500" : "bg-white"}
         />
       </div>
-      <div className="col-span-5 bg-black flex flex-col">
+      <div className="col-span-5 flex flex-col bg-black">
         <span className="pl-1 text-[3vh] font-bold uppercase text-white">
-          AT BAT
+          AL BAT
         </span>
-        <span className="text-white text-[4vh] pl-4 uppercase">
+        <span className="pl-4 text-[4vh] uppercase text-white">
           {at_bat?.batter?.name}
         </span>
       </div>

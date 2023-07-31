@@ -21,7 +21,7 @@ import { useEffect } from "react";
 import useCheckDraw from "../hooks/useCheckDraw";
 
 const values = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-const rhe = ["r", "h", "e"];
+const rhe = ["c", "h", "e"];
 
 function Game({ handlePlayersView }) {
   const initedGame = useSelector((state) => state.game.inited);

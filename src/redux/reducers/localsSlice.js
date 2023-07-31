@@ -50,7 +50,7 @@ export const localsSlice = createSlice({
   name: LOCAL_SLICE_NAME,
   initialState: {
     batters: INIT_BATTERS,
-    team_name: "LOCAL",
+    team_name: "LOCALES",
     at_bat: INIT_AT_BAT,
     last_batter: null,
     pitchers: INIT_PITCHERS,
