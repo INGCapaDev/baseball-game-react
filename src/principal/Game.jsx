@@ -20,7 +20,7 @@ import { useTour } from "@reactour/tour";
 import { useEffect } from "react";
 import useCheckDraw from "../hooks/useCheckDraw";
 import ShowModal from "../ShowModal";
-import Clock from "react-live-clock";
+import Logo from "./components/logo/Logo";
 
 const values = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const rhe = ["c", "h", "e"];
@@ -66,23 +66,7 @@ function Game({ handlePlayersView }) {
   return (
     <>
       <div className="container-grid grid-fullscreen m-1 grid gap-1">
-        <div className="relative col-span-6 row-span-4 bg-secondary">
-          <Clock
-            format={"HH:mm:ss"}
-            ticking={true}
-            className="absolute left-2 top-0 text-[3.5vh] font-bold text-primary-text"
-          ></Clock>
-          <img
-            src="/img/logo-diablos.jpeg"
-            className="h-full w-full bg-contain"
-            alt="logo"
-          />
-          <Clock
-            format={"DD-MM-YY"}
-            ticking={true}
-            className="absolute right-2 top-0 z-10 text-[3.5vh] font-bold text-primary-text"
-          ></Clock>
-        </div>
+        <Logo />
 
         <div className="col-span-8 grid grid-cols-8">
           <Out text="Outs" />

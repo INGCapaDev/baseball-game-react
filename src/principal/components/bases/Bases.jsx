@@ -5,7 +5,12 @@ const Bases = () => {
   const bases = useSelector((state) => state.game.bases);
   return (
     <div className="col-span-6 row-span-3 bg-primary p-4">
-      <div className="flex h-full w-full items-center justify-center">
+      <div className="relative flex h-full w-full items-center justify-center">
+        <img
+          src="/img/big-fan-logo.png"
+          alt="Big Fan Logo"
+          className="absolute -bottom-4 -left-4 w-[20vh] "
+        />
         <div className="relative h-[20vh] w-[20vh] rotate-45 border-4 border-primary-text">
           <div id="second" className=" border-l-0 border-t-0 "></div>
           <Base
