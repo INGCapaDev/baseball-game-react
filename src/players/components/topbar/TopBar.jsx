@@ -16,7 +16,7 @@ const TopBar = (props) => {
     <div className="col-span-full grid grid-cols-12 bg-stone-800">
       <div className="col-span-3 flex items-center">
         <span className="pl-2 font-chalk text-[5vh] tracking-widest text-yellow-300">
-          Team name:
+          Equipo:
         </span>
       </div>
       <Team
@@ -26,7 +26,7 @@ const TopBar = (props) => {
       ></Team>
       <div className="col-span-1 flex items-center justify-center overflow-hidden">
         <button
-          className="overflow-hidden h-full rounded-full"
+          className="h-full overflow-hidden rounded-full"
           ref={closeRef}
           onClick={() => {
             setTimeout(() => {
