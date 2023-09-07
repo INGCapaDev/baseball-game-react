@@ -180,6 +180,9 @@ export const gameSlice = createSlice({
       state.strikes = 0;
       state.balls = 0;
       state.lastPlay = "Out";
+      if (state.outs == 3) {
+        state.lastPlay = "Ponche";
+      }
     },
     basePerBall: (state, action) => {
       let _bases = [...state.bases];
