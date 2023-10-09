@@ -38,7 +38,7 @@ const audios = {
         }),
       }),
     }),
-    ball: audioFunc(11, 11, 1, {
+    ball: audioFunc(11, 11, 11, {
       strike: audioFunc(12, 12, 12, {
         strike: audioFunc(13, 13, 13),
         ball: audioFunc(14, 14, 14, {
