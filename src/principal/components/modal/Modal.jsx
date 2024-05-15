@@ -42,7 +42,7 @@ const Modal = ({ onClose }) => {
   };
 
   const homerun = () => {
-    playSound("hit");
+    playSound("homerun");
     makePlay(
       gameSlice.actions.homeRun({
         turn,

@@ -8,7 +8,7 @@ const Logo = () => {
         {time}
       </span>
       <img
-        src="/img/logo-diablos.jpeg"
+        src="/img/logo-JB-cel-1.png"
         className="h-full w-full bg-contain"
         alt="logo"
       />

@@ -147,11 +147,20 @@ function Game({ handlePlayersView }) {
 
         <Bases />
         <div className="col-span-12 row-span-3 bg-primary">
-          <img
-            src="/img/banner.png"
+          {initedGame ? (
+            <img
+            src={turn == 'visitors' ? '/img/visitors.png' : '/img/locals.png'}
             alt="banner"
             className="h-full w-full bg-contain"
           />
+          ) : (
+            <img
+            src="/img/hot-dogs.jpeg"
+            alt="banner"
+            className="h-full w-full bg-contain"
+          />
+          )}
+          
         </div>
       </div>
     </>

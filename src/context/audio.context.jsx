@@ -7,6 +7,7 @@ const audios = {
   hit: "/assets/audio/HIT.mp3",
   strike: "../assets/audio/STRIKE.mp3",
   single_double: "/assets/audio/SINGLE-DOUBLE.mp3",
+  homerun: "/assets/audio/HOMERUN.mp3"
 };
 
 const AudioContext = createContext({});
