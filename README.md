@@ -14,6 +14,7 @@ A baseball game simulator, which allow you to mark all the plays available in a 
 - ✅ Complex state management
 - ✅ Sound effects
 
+
 ## 🚀 Getting Started
 
 Clone this repository to your local machine using Git.
@@ -24,6 +25,10 @@ Clone this repository to your local machine using Git.
 | `pnpm dev`     | Starts local dev server at `localhost:4173`  |
 | `pnpm build`   | Build your production site to `./dist/`      |
 | `pnpm preview` | Preview your build locally, before deploying at `localhost:4173` |
+
+## :octocat: Contributors
+
+![Contributors IMG](https://github.com/INGCapaDev/baseball-game-react/assets/114124075/b89699ca-c740-4060-8937-9d29c11a92ee)
 
 ## 📃 License
 
