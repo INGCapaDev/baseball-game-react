@@ -5,8 +5,7 @@ A baseball game simulator, which allow you to mark all the plays available in a 
 
 ## 🥃 Preview
 
-![Personal Blog Preview](https://github.com/INGCapaDev/my-blog/assets/114124075/8599c05e-83eb-43ed-8196-2ea7736132ae)
-
+![JB Baseball Game](https://github.com/INGCapaDev/baseball-game-react/assets/114124075/f25329c9-7a0b-471f-b50c-d54a1540870d)
 
 ## 🔥 Features
 
@@ -22,11 +21,9 @@ Clone this repository to your local machine using Git.
 | Command        | Action                                       |
 | :------------- | :------------------------------------------- |
 | `pnpm install` | Installs dependencies                        |
-| `pnpm dev`     | Starts local dev server at `localhost:4321`  |
+| `pnpm dev`     | Starts local dev server at `localhost:4173`  |
 | `pnpm build`   | Build your production site to `./dist/`      |
-| `pnpm preview` | Preview your build locally, before deploying |
-
-Edit the HTML files in the `src/pages` directory to add your projects, experiences, and personal information.
+| `pnpm preview` | Preview your build locally, before deploying at `localhost:4173` |
 
 ## 📃 License
 
